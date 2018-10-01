@@ -1,0 +1,2 @@
+void BSOD_cb();
+

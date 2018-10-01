@@ -1,0 +1,216 @@
+;******************************************************************************
+;******************************************************************************
+
+
+
+
+; PIC12LF1571 Configuration Bit Settings
+
+; Assembly source line config statements
+
+#include "p12lf1571.inc"
+
+; CONFIG1
+; __config 0x39A4
+ __CONFIG _CONFIG1, _FOSC_INTOSC & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _BOREN_OFF & _CLKOUTEN_OFF
+; CONFIG2
+; __config 0x1CFF
+ __CONFIG _CONFIG2, _WRT_OFF & _PLLEN_OFF & _STVREN_OFF & _BORV_LO & _LPBOREN_OFF & _LVP_OFF
+
+
+
+	extern SendRC5              ; so linker will see it
+;------------------------------------------------------------------------------
+; VARIABLE DEFINITIONS
+;
+; Available Data Memory divided into Bank 0-15.  Each Bank may contain 
+; Special Function Registers, General Purpose Registers, and Access RAM 
+;
+;------------------------------------------------------------------------------
+
+    CBLOCK 0x20 ; Define GPR variable register locations
+        MYVAR1  ; User variables allocated contiguously
+        MYVAR2  ; 
+        MYVAR3  ; 
+    ENDC
+
+LOOP0        EQU    0x70        ; 0x70 -> 0x7F = mapped in all banks
+LOOPCNT      EQU    0x71        ; so no need to BANKSEL
+buttonCnt    EQU    0x72        ; so no need to BANKSEL
+
+;------------------------------------------------------------------------------
+; flash init
+;------------------------------------------------------------------------------
+
+DATAEE    ORG  0x380 ; high endurance flash 128 bytes
+    DE    "MCHP"  ; Place 'M' 'C' 'H' 'P' at address 0,1,2,3
+
+;------------------------------------------------------------------------------
+; RESET VECTOR
+;------------------------------------------------------------------------------
+
+    ORG     0x0000            ; processor reset vector
+    GOTO    START             ; When using debug header, first inst.
+                              ; may be passed over by ICD2.  
+
+;------------------------------------------------------------------------------
+; INTERRUPT SERVICE ROUTINE
+;---------------------------------------------------------------------------
+			      
+    ORG      0x0004
+
+;------------------------------------------------------------------------------
+; USER INTERRUPT SERVICE ROUTINE GOES HERE
+;------------------------------------------------------------------------------
+
+    BANKSEL PORTA
+    BTFSC PORTA, 3 ; bit 3  if 1 == pressed, skip inc
+    BRA S1
+    INCF  buttonCnt, F
+S1
+
+    BANKSEL INTCON
+    BCF INTCON, TMR0IF 
+    BSF INTCON, TMR0IE 
+
+    ; MOVLW B'11111011' ; timer0 off 
+    ; ANDWF INTCON, F
+
+    ; MOVLW B'00100000' ; bit 5=timer0  int enable
+    ; IORWF INTCON, F
+    RETFIE                    ; return from interrupt
+    
+
+red
+    movwf   LOOPCNT ; save w reg to cnt
+    movlw   0xFF
+    movwf   LOOP0
+L0  decfsz  LOOP0, F
+    bra	    L0
+    decfsz  LOOPCNT, F
+    bra	    L0
+    return
+
+delay
+    movwf   LOOPCNT ; save w reg to cnt
+    movlw   0xFF
+    movwf   LOOP0
+L0  decfsz  LOOP0, F
+    bra	    L0
+    decfsz  LOOPCNT, F
+    bra	    L0
+    return
+
+;------------------------------------------------------------------------------
+; MAIN PROGRAM
+;------------------------------------------------------------------------------
+
+START
+
+    ; INTIALIZING PORTA
+    BANKSEL PORTA
+    CLRF PORTA	; init port A
+    
+    BANKSEL LATA
+    CLRF LATA	; init data latch
+    
+    BANKSEL ANSELA
+    CLRF ANSELA
+
+    
+    ; set clock to 4mhz
+    BANKSEL OSCCON
+    MOVLW B'01101010' ; pll=0, 1101=ircf, x=0, 1x=SCS   oscilator 4mhz
+    MOVWF OSCCON
+    NOP
+    NOP
+    NOP ; clock stable ?
+    
+    ; set port I/O direction
+    BANKSEL TRISA
+    MOVLW B'00001001' ; init pin 1=in 0=out bit order: 7-0  RA3=button 4,5 = RED,BLUE/LED RA2=OUT/GREEN LED  RA1=IR LED RA0=INPUT IR RECV 
+    MOVWF TRISA
+
+    ; enable weak pull-ups
+    BANKSEL OPTION_REG
+    MOVLW B'01111111' ; pull up enable bit is active low
+    ANDWF OPTION_REG, F
+
+    ; pull-up on button
+    BANKSEL WPUA
+    MOVLW B'00001000' ; init pin 1=in 0=out bit order: 7-0  RA3=button 4,5 = RED,BLUE/LED RA2=OUT/GREEN LED  RA1=IR LED RA0=INPUT IR RECV 
+    IORWF WPUA, F
+
+    ; timer0 clock source
+    BANKSEL OPTION_REG
+    MOVLW B'11011111' ; bit 5=timer0 
+    ANDWF OPTION_REG, F
+
+    ; timer0 int enable
+    BANKSEL INTCON
+    MOVLW B'00100000' ; bit 5=timer0 
+    IORWF INTCON, F
+
+
+    BSF  INTCON, GIE ; global interupts enable 
+    CLRF buttonCnt   ; button count=0
+TOP
+    BANKSEL LATA
+    MOVLW B'00110100' ; ON  '00110100' LED 2,4,5 ON, IR 1 LED OFF
+    MOVWF LATA
+
+    movf buttonCnt, W ; buttonCnt delays
+    call delay
+
+
+    MOVLW B'00000100' ; ON  '00110100'
+    MOVWF LATA
+
+    movf buttonCnt, W ; buttonCnt delays
+    call delay
+
+
+    MOVLW B'00010000' ; ON  '00110100'
+    MOVWF LATA
+    
+    movf buttonCnt, W ; buttonCnt delays
+    call delay
+
+    ; 
+    MOVLW B'00100000' ; ON  '00110100'
+    MOVWF LATA
+    
+    movf buttonCnt, W ; buttonCnt delays
+    call delay
+
+
+    ; "black"
+    BANKSEL LATA
+    MOVLW B'00000000' ; ON  '00110100'
+    MOVWF LATA
+    
+    movf buttonCnt, W ; buttonCnt delays
+    call delay
+
+
+    ; RA5 is multiplexed, set to sink current from the speaker
+    BANKSEL ODCONA	; set SPEAKER TO INPUT
+    MOVLW B'00100000' ; init pin 1=in 0=out bit order: 7-0  RA3=button 4,5 = RED,BLUE/LED RA2=OUT/GREEN LED  RA1=IR LED RA0=INPUT IR RECV 
+    MOVWF ODCONA
+
+    BANKSEL LATA
+    MOVWF LATA
+
+    movf buttonCnt, W ; buttonCnt delays
+    call delay
+
+    BANKSEL LATA
+    MOVLW B'00000000' ; init pin 1=in 0=out bit order: 7-0  RA3=button 4,5 = RED,BLUE/LED RA2=OUT/GREEN LED  RA1=IR LED RA0=INPUT IR RECV 
+    MOVWF LATA
+
+    movf buttonCnt, W ; buttonCnt delays
+    call delay
+
+    BRA TOP
+    call SendRC5 ; force linker to include IR code for space check
+    END

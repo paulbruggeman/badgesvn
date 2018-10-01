@@ -1,0 +1,8 @@
+#!/bin/tcsh -f
+
+# most/all version controls do not restore timestamps and mode
+# but use what the user currently has setup for new files
+# This script save timestamps and read/write/exec to: modes
+# restore them using (from a unix shell): source modes
+
+find [a-zA-Z0-9]* -printf 'chmod 0%m "%p"; touch -d "%AY%Am%Ad %AT" "%p"\n' | sed -e '/\/\./d' > modes

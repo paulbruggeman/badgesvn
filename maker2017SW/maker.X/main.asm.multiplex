@@ -1,0 +1,388 @@
+;******************************************************************************
+;******************************************************************************
+
+
+
+
+; PIC12LF1571 Configuration Bit Settings
+
+; Assembly source line config statements
+
+; #include "p12lf1571.inc"
+#include "p12f1572.inc"
+
+; CONFIG1
+; __config 0x39A4
+ __CONFIG _CONFIG1, _FOSC_INTOSC & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _BOREN_OFF & _CLKOUTEN_OFF
+; CONFIG2
+; __config 0x1CFF
+ __CONFIG _CONFIG2, _WRT_OFF & _PLLEN_OFF & _STVREN_OFF & _BORV_LO & _LPBOREN_OFF & _LVP_OFF
+
+
+
+	extern SendRC5              ; so linker will see it
+;------------------------------------------------------------------------------
+; VARIABLE DEFINITIONS
+;
+; Available Data Memory divided into Bank 0-15.  Each Bank may contain 
+; Special Function Registers, General Purpose Registers, and Access RAM 
+;
+;------------------------------------------------------------------------------
+
+; cblock = constants
+;cblock 0x20
+;  LOOP0
+;  LOOP1
+;  LOOPCNT
+;endc
+
+buttonCnt      EQU    0x70        ; so no need to BANKSEL
+redpwm         EQU    0x71        ; so no need to BANKSEL
+greenpwm       EQU    0x72        ; so no need to BANKSEL
+bluepwm        EQU    0x73        ; so no need to BANKSEL
+speakerpwm     EQU    0x74        ; so no need to BANKSEL
+red            EQU    0x75        ; so no need to BANKSEL
+green          EQU    0x76        ; so no need to BANKSEL
+blue           EQU    0x77        ; so no need to BANKSEL
+speaker        EQU    0x78        ; so no need to BANKSEL
+pwm            EQU    0x79        ; so no need to BANKSEL
+pwmmode        EQU    0x7A        ; so no need to BANKSEL
+
+;LOOP0         EQU    0x73        ; so no need to BANKSEL
+;LOOP1         EQU    0x74        ; so no need to BANKSEL
+;LOOPCNT         EQU    0x75        ; so no need to BANKSEL
+
+
+; uninited data = bss
+	udata
+LOOP0	res 1
+LOOP1	res 1
+LOOPCNT	res 1
+
+;------------------------------------------------------------------------------
+; flash init
+;------------------------------------------------------------------------------
+
+; HEF    ORG  0x380 ; piclf1271 high endurance flash 128 bytes
+; HEF    ORG  0x780 ; piclf1272 high endurance flash 128 bytes
+;     DE    "derp"  ; Place 'derp'
+
+;------------------------------------------------------------------------------
+; RESET VECTOR
+;------------------------------------------------------------------------------
+
+    ORG     0x0000            ; processor reset vector
+    GOTO    START             ; When using debug header, first inst.
+                              ; may be passed over by ICD2.  
+
+;------------------------------------------------------------------------------
+; interrupt service routine
+;---------------------------------------------------------------------------
+			      
+    ORG      0x0004
+
+;   check if button is pressed
+    BANKSEL PORTA
+    BTFSC PORTA, 3 ; bit 3  if 0 (pressed), inc
+    BRA S1
+    INCF  buttonCnt, F
+S1
+
+;    MOVF  TMR0, W
+;    MOVWF  tmr0Cnt
+
+    ; call redoff
+    ; call greenoff
+    ; call blueoff
+    ; call speakeroff
+
+sspkr
+    movlw 0x4
+    subwf pwmmode, W ; 
+    btfss STATUS, Z ; 
+    bra bblue
+    call redoff
+    decfsz speakerpwm, F
+    bra dospeaker
+    movlw 0x1 ; pwm done, reset for next loop/decf
+    movwf speakerpwm
+    bra wrap
+dospeaker
+    call speakeron
+    bra wrap
+
+bblue
+    movlw 0x3
+    subwf pwmmode, W ; 
+    btfss STATUS, Z ; 
+    bra ggreen
+    call speakeroff
+    decfsz bluepwm, F
+    bra doblue
+    movlw 0x1 ; pwm done, reset for next loop/decf
+    movwf bluepwm
+    bra wrap
+doblue
+    call blueon
+    bra wrap
+
+ggreen
+    movlw 0x2
+    subwf pwmmode, W ; 
+    btfss STATUS, Z ; 
+    bra rred
+    call blueoff
+    decfsz greenpwm, F
+    bra dogreen
+    movlw 0x1 ; pwm done, reset for next decf
+    movwf greenpwm
+    bra wrap
+dogreen
+    call greenon
+    bra wrap
+
+rred
+    movlw 0x1
+    subwf pwmmode, W ; 
+    btfss STATUS, Z ; 
+    bra wrap
+    call greenoff
+    decfsz redpwm, F
+    bra dored
+    movlw 0x1 ; pwm done, reset for next decf
+    movwf redpwm
+    bra wrap
+dored
+    call redon
+;    bra wrap
+
+
+wrap
+    decfsz pwmmode, F ; next red/green/blue/speaker
+    bra done
+    movlw 0x04  ; 1=red 2=green; 3=blue; 4=speaker
+    movwf pwmmode  ; 
+    decfsz pwm, F
+    bra done
+    movlw 0xFF  ; pwm period
+    movwf pwm  ; 
+    movf red, W ; reset pwm vals
+    movwf redpwm
+    movf green, W ; reset pwm vals
+    movwf greenpwm
+    movf blue, W ; reset pwm vals
+    movwf bluepwm
+    movf speaker, W ; reset pwm vals
+    movwf speakerpwm
+
+done
+    BANKSEL INTCON
+    BCF INTCON, TMR0IF 
+    BSF INTCON, TMR0IE 
+
+    ; MOVLW B'11111011' ; timer0 off 
+    ; ANDWF INTCON, F
+
+    ; MOVLW B'00100000' ; bit 5=timer0  int enable
+    ; IORWF INTCON, F
+    RETFIE                    ; return from interrupt
+    
+
+; 
+; red
+; 
+redoff
+    ;   RA4 off, RA5 off
+    BANKSEL LATA
+    BCF LATA, LATA4 ; set off
+    BCF LATA, LATA5 ; set off
+    BANKSEL TRISA
+    BSF TRISA, TRISA4 ; set as off/input floating
+    BSF TRISA, TRISA5 ; set as off/input floating
+    return
+
+redon
+    ;   RA4 on, RA5 off
+    BANKSEL TRISA
+    BCF TRISA, TRISA4 ; set output
+    BCF TRISA, TRISA5 ; set output
+    BANKSEL LATA
+    BSF LATA, LATA4 ; set on
+    BCF LATA, LATA5 ; set output
+    return
+
+;
+; green
+;
+greenoff
+    ;   RA2 off, RA5 out, off
+    BANKSEL LATA
+    BCF LATA, LATA2 ; set off
+    BCF LATA, LATA5 ; set off
+    BANKSEL TRISA
+    BSF TRISA, TRISA2 ; set input/floating
+    BSF TRISA, TRISA5 ; set input/floating
+    return
+
+greenon
+    ;   RA2 on, RA5 out, off
+    BANKSEL TRISA
+    BCF TRISA, TRISA2 ; set output
+    BCF TRISA, TRISA5 ; set output
+    BANKSEL LATA
+    BSF LATA, LATA2 ; set on- source
+    BCF LATA, LATA5 ; set off- sink
+    return
+
+;
+; blue
+;
+blueoff
+    ;   RA3 off, RA2 out, off
+    BANKSEL LATA
+    BCF LATA, LATA4 ; set off
+    BCF LATA, LATA2 ; set off
+    BANKSEL TRISA
+    BSF TRISA, TRISA2 ; set input/floating
+    BSF TRISA, TRISA4 ; set input/floating
+    return
+
+blueon
+    ;   RA3 on, RA2 out, off
+    BANKSEL TRISA
+    BCF TRISA, TRISA2 ; set output
+    BCF TRISA, TRISA4 ; set output
+    BANKSEL LATA
+    BCF LATA, TRISA2 ; set off- sink
+    BSF LATA, TRISA4 ; set on- source
+    return
+
+;
+; speaker
+;
+speakeroff
+    ;   RA5 out, off
+    BANKSEL LATA
+    BCF LATA, LATA5 ; set off
+    BANKSEL TRISA
+    BSF TRISA, TRISA5 ; set as input
+    return
+
+speakeron
+    ;   RA5 out, on
+    BANKSEL TRISA
+    BCF TRISA, TRISA5 ; set output
+    BANKSEL LATA
+    BSF LATA, LATA5 ; set on
+    return
+
+ 
+delay
+    banksel LOOPCNT
+    movwf   LOOPCNT ; save w reg to cnt
+    movlw   0xFF
+    movwf   LOOP0
+    movlw   0x1
+    movwf   LOOP1
+L0  decfsz  LOOP0, F
+    bra	    L0
+    decfsz  LOOPCNT, F
+    bra	    L0
+    decfsz  LOOP1, F
+    bra	    L0
+    return
+
+;------------------------------------------------------------------------------
+; MAIN PROGRAM
+;------------------------------------------------------------------------------
+
+START
+    ; INTIALIZING PORTA
+    BANKSEL PORTA
+    CLRF PORTA	; init port A
+    
+    BANKSEL LATA
+    CLRF LATA	; init data latch
+    
+    BANKSEL ANSELA
+    CLRF ANSELA
+
+    
+    ; set clock to 4mhz
+    BANKSEL OSCCON
+    MOVLW B'01101010' ; pll=0, 1101=ircf, x=0, 1x=SCS   oscilator 4mhz
+    MOVWF OSCCON
+    NOP
+    NOP
+    NOP ; clock stable ?
+    
+    ; set port I/O direction
+    BANKSEL TRISA
+    MOVLW B'00001001' ; RA0=in/IR RECV, RA1=out/IR LED,  RA2=OUT/GREEN LED,  RA3=in/button, RA4 = R,B source, RA5: out/source:(transistor), out sink:(G, R)
+    MOVWF TRISA
+
+    ; enable weak pull-ups
+    BANKSEL OPTION_REG
+    BCF OPTION_REG, NOT_WPUEN ; pull up enable bit is active low
+    BCF OPTION_REG, PSA ; enable prescaler
+    BCF OPTION_REG, PS2_OPTION_REG ; prescaler0,1,2 = 0x001 = 4
+    BCF OPTION_REG, PS1_OPTION_REG ; prescaler0,1,2 = 0x001 = 4
+    BSF OPTION_REG, PS0_OPTION_REG ; prescaler0,1,2 = 0x001 = 4
+
+    ; pull-up on button
+    BANKSEL WPUA
+    BSF WPUA, RA3
+
+    ; 
+    ; init vars before any chance of interupt
+    ; 
+    movlw 0x1
+    movwf buttonCnt
+
+    movlw 0x04  ; 1=red 2=green; 3=blue; 4=speaker
+    movwf pwmmode  ; 
+    movwf pwm  ; 
+
+    movlw 0x1
+    movwf red  ; 
+
+    movlw 0x1
+    movwf green  ; 
+
+    movlw 0x40
+    movwf blue  ; 
+
+    movlw 0x1
+    movwf speaker  ; 
+
+    ; 
+    ; timer0 clock source
+    ; 
+    BANKSEL OPTION_REG
+    BCF OPTION_REG, TMR0CS ; int clock-> Fosc/4
+
+    ; timer0 int enable
+    BANKSEL INTCON
+    BSF INTCON, TMR0IE
+
+    ; global interupts enable 
+    BSF  INTCON, GIE 
+
+
+;    BANKSEL LATA
+;    MOVLW B'00110100' ; ON  '00110100' LED 2,4,5 ON, IR 1 LED OFF
+;    MOVWF LATA
+
+TOP
+
+;    movf  buttonCnt, W
+;    movwf red
+;    movwf green
+;    movwf blue
+
+;    movf  buttonCnt, W
+;    movwf speaker
+
+    BRA TOP
+    call SendRC5 ; force linker to include IR code for space check
+    END

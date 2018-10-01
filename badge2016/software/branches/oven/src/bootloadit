@@ -1,0 +1,8 @@
+#!/bin/tcsh -f
+
+cd ../Badge16.X
+make
+cd ../src
+#ls -lt ../Badge16.X/dist/default/production/Badge16.X.production.hex
+
+./pic32usb ../Badge16.X/dist/default/production/Badge16.X.production.hex

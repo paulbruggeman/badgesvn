@@ -1,0 +1,1522 @@
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;******************************************************************************
+                      00002 ;******************************************************************************
+                      00003 
+                      00004 
+                      00005 
+                      00006 
+                      00007 ; PIC12LF1571 Configuration Bit Settings
+                      00008 
+                      00009 ; Assembly source line config statements
+                      00010 
+                      00011 ; #include "p12lf1571.inc"
+                      00012 #include "p12f1572.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Nov 13 2014
+                      00005 ;  MPASM PIC12F1572 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      01603         LIST
+                      00013 
+                      00014 ; CONFIG1
+                      00015 ; __config 0x39A4
+8007   39A4           00016  __CONFIG _CONFIG1, _FOSC_INTOSC & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _BOREN_OFF & _CLKOUTE
+                            N_OFF
+                      00017 ; CONFIG2
+                      00018 ; __config 0x1CFF
+8008   1CFF           00019  __CONFIG _CONFIG2, _WRT_OFF & _PLLEN_OFF & _STVREN_OFF & _BORV_LO & _LPBOREN_OFF & _LVP_OFF
+                      00020 
+                      00021 
+                      00022 
+                      00023 ;       extern SendRC5              ; so linker will see it
+                      00024 ;------------------------------------------------------------------------------
+                      00025 ; VARIABLE DEFINITIONS
+                      00026 ;
+                      00027 ; Available Data Memory divided into Bank 0-15.  Each Bank may contain 
+                      00028 ; Special Function Registers, General Purpose Registers, and Access RAM 
+                      00029 ;
+                      00030 ;------------------------------------------------------------------------------
+                      00031 
+                      00032 ; cblock = constants
+                      00033 ;cblock 0x20
+                      00034 ;  LOOP0
+                      00035 ;  LOOP1
+                      00036 ;  LOOPCNT
+                      00037 ;endc
+                      00038 
+  00000070            00039 buttonCnt      EQU    0x70        ; so no need to BANKSEL
+  00000071            00040 redpwm         EQU    0x71        ; so no need to BANKSEL
+  00000072            00041 greenpwm       EQU    0x72        ; so no need to BANKSEL
+  00000073            00042 bluepwm        EQU    0x73        ; so no need to BANKSEL
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000074            00043 speakerpwm     EQU    0x74        ; so no need to BANKSEL
+  00000075            00044 red            EQU    0x75        ; so no need to BANKSEL
+  00000076            00045 green          EQU    0x76        ; so no need to BANKSEL
+  00000077            00046 blue           EQU    0x77        ; so no need to BANKSEL
+  00000078            00047 speaker        EQU    0x78        ; so no need to BANKSEL
+  00000079            00048 pwm            EQU    0x79        ; so no need to BANKSEL
+                      00049 
+                      00050 ;LOOP0         EQU    0x73        ; so no need to BANKSEL
+                      00051 ;LOOP1         EQU    0x74        ; so no need to BANKSEL
+                      00052 ;LOOPCNT         EQU    0x75        ; so no need to BANKSEL
+                      00053 
+                      00054 
+                      00055 ; uninited data = bss
+                      00056         udata
+0000                  00057 audioDur        res 1
+0001                  00058 audioDurCnt     res 1
+0002                  00059 audioFreq       res 1
+0003                  00060 audioFreqCnt    res 1
+                      00061 
+0004                  00062 LOOP0   res 1
+0005                  00063 LOOP1   res 1
+0006                  00064 LOOPCNT res 1
+                      00065 
+                      00066 ;------------------------------------------------------------------------------
+                      00067 ; flash init
+                      00068 ;------------------------------------------------------------------------------
+                      00069 
+                      00070 ; HEF    ORG  0x380 ; piclf1271 high endurance flash 128 bytes
+                      00071 ; HEF    ORG  0x780 ; piclf1272 high endurance flash 128 bytes
+                      00072 ;     DE    "derp"  ; Place 'derp'
+                      00073 
+                      00074 ;------------------------------------------------------------------------------
+                      00075 ; RESET VECTOR
+                      00076 ;------------------------------------------------------------------------------
+                      00077 
+                      00078     ORG     0x0000            ; processor reset vector
+0000   2???           00079     GOTO    START             ; When using debug header, first inst.
+                      00080                               ; may be passed over by ICD2.  
+                      00081 
+                      00082 ;------------------------------------------------------------------------------
+                      00083 ; interrupt service routine
+                      00084 ;---------------------------------------------------------------------------
+                      00085                               
+                      00086     ORG      0x0004
+                      00087 
+                      00088 ;   check if button is pressed
+0004   0022           00089     banksel LATA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0005   108C           00090     bcf LATA, LATA1 ; set off to drain
+0006   0000           00091     nop ; wait to drain
+                      00092 
+0007   0021           00093     banksel TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0008   148C           00094     bsf TRISA, TRISA1 ; set IR led/button as an input
+0009   0000           00095     nop ; wait to drain
+                      00096 
+000A   0024           00097     banksel WPUA ; pullup on
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000B   148C           00098     bsf WPUA, WPUA1
+000C   0000           00099     nop ; wait to drain
+                      00100 
+000D   0027           00101     banksel INLVLA ; set input level=TTL off= ~0.15v 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000E   108C           00102     bcf INLVLA, INLVLA1
+000F   0000           00103     nop ; wait to charge
+                      00104 
+0010   0020           00105     banksel PORTA
+0011   30FF           00106     movlw 0xFF
+0012   00F0           00107     movwf buttonCnt
+0013   1C8C           00108     btfss PORTA, RA1 ; = 1 = not pressed
+0014   3???           00109     bra doNote
+0015   3001           00110     movlw 0x1 ; off
+0016   00F0           00111     movwf buttonCnt
+0017   3???           00112     bra skipNote
+                      00113 
+0018                  00114 doNote
+0018   002?           00115     banksel audioDur
+0019   3000           00116     movlw 0x0 ; decimal
+001A   00??           00117     movwf audioFreqCnt
+001B   3000           00118     movlw 0x0 ; decimal
+001C   00??           00119     movwf audioDurCnt
+                      00120 
+001D   30FF           00121     movlw 0xFF ; decimal
+001E   00??           00122     movwf audioFreq
+001F   00F7           00123     movwf blue
+0020   30FF           00124     movlw 0xFF ; decimal
+0021   00??           00125     movwf audioDur
+0022                  00126 skipNote
+                      00127 
+                      00128 ;    BANKSEL PORTA
+                      00129 ;    movlw 0xFF
+                      00130 ;    movwf buttonCnt
+                      00131 ;    btfss PORTA, RA1 ; = 1 = not pressed
+                      00132 ;    BRA S1
+                      00133 ;    movlw 0x1 ; off
+                      00134 ;    movwf buttonCnt
+                      00135 ;S1
+                      00136 
+0022   0024           00137     banksel WPUA 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0023   108C           00138     bcf WPUA, WPUA1 ; pullup off
+                      00139 
+0024   0021           00140     banksel TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0025   108C           00141     bcf TRISA, TRISA1 ; set IR led/button as an output
+                      00142 ;   
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00143 ;   done with button
+                      00144 ;   
+                      00145 
+0026   2???           00146     call doAudio
+                      00147 
+                      00148 ;
+                      00149 ; RGB LED pwm
+                      00150 ;
+                      00151 ;    BCF LATA, LATA4 ; off
+                      00152 ;    decfsz speakerpwm, F
+                      00153 ;    bra l_speakeron
+                      00154 ;    movlw 0x1  ; so next loop see 1-1=0
+                      00155 ;    movwf speakerpwm
+                      00156 ;    bra l_blue
+                      00157 ;l_speakeron
+                      00158 ;    BSF LATA, LATA4 ; on
+                      00159 
+0027   0022           00160     banksel LATA
+0028                  00161 l_blue
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0028   128C           00162     bcf LATA, LATA5 ; off
+0029   0BF3           00163     decfsz bluepwm, F
+002A   3???           00164     bra l_blueon
+002B   3001           00165     movlw 0x1  ; so next loop see 1-1=0
+002C   00F3           00166     movwf bluepwm
+002D   3???           00167     bra l_green
+002E                  00168 l_blueon
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+002E   168C           00169     bsf LATA, LATA5 ; on
+                      00170     
+                      00171 ;
+002F                  00172 l_green
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+002F   100C           00173     bcf LATA, LATA0 ; set off
+0030   0BF2           00174     decfsz greenpwm, F
+0031   3???           00175     bra l_greenon
+0032   3001           00176     movlw 0x1  ; so next loop see 1-1=0
+0033   00F2           00177     movwf greenpwm
+0034   3???           00178     bra l_red
+0035                  00179 l_greenon
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0035   140C           00180     bsf LATA, LATA0 ; set on
+                      00181 
+                      00182 ;
+0036                  00183 l_red
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0036   110C           00184     bcf LATA, LATA2 ; off
+0037   0BF1           00185     decfsz redpwm, F
+0038   3???           00186     bra l_redon
+0039   3001           00187     movlw 0x1  ; so next loop see 1-1=0
+003A   00F1           00188     movwf redpwm
+003B   3???           00189     bra l_pwm
+003C                  00190 l_redon
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+003C   150C           00191     bsf LATA, LATA2 ; set on
+                      00192 
+                      00193 ; reset pwm period and values?
+003D                  00194 l_pwm
+003D   0BF9           00195     decfsz pwm, F
+003E   3???           00196     bra done
+                      00197 
+003F   30FF           00198     movlw 0xFF  ; restart pwm period
+0040   00F9           00199     movwf pwm  ; 
+                      00200 
+0041   0875           00201     movf red, W ; reset pwm vals
+0042   00F1           00202     movwf redpwm
+0043   0AF5           00203     incf red, F ; increment for fun
+                      00204 
+0044   0876           00205     movf green, W ; reset pwm vals
+0045   00F2           00206     movwf greenpwm
+0046   03F6           00207     decf green, F ; for fun
+                      00208 
+0047   0877           00209     movf blue, W ; reset pwm vals
+0048   00F3           00210     movwf bluepwm
+                      00211 
+0049   0878           00212     movf speaker, W ; reset pwm vals
+004A   00F4           00213     movwf speakerpwm
+004B   0AF8           00214     incf speaker, F ; increment for fun
+                      00215 
+004C                  00216 done
+004C   0020           00217     banksel INTCON
+004D   110B           00218     bcf INTCON, TMR0IF 
+004E   168B           00219     bsf INTCON, TMR0IE 
+                      00220     ; MOVLW B'11111011' ; timer0 off 
+                      00221     ; ANDWF INTCON, F
+                      00222 
+                      00223     ; MOVLW B'00100000' ; bit 5=timer0  int enable
+                      00224     ; IORWF INTCON, F
+004F   0009           00225     retfie                    ; return from interrupt
+                      00226     
+0050                  00227 delay
+0050   002?           00228     banksel LOOPCNT
+0051   00??           00229     movwf   LOOPCNT ; save w reg to cnt
+0052   30FF           00230     movlw   0xFF
+0053   00??           00231     movwf   LOOP0
+0054   3001           00232     movlw   0x1
+0055   00??           00233     movwf   LOOP1
+0056   0B??           00234 L0  decfsz  LOOP0, F
+0057   3???           00235     bra     L0
+0058   0B??           00236     decfsz  LOOPCNT, F
+0059   3???           00237     bra     L0
+005A   0B??           00238     decfsz  LOOP1, F
+005B   3???           00239     bra     L0
+005C   0008           00240     return
+                      00241 
+005D                  00242 doAudio
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+005D   002?           00243    banksel audioDur
+                      00244 
+                      00245    ; if (G_duration == 0) return;
+005E   08??           00246    movf audioDur, F ; move to self sets the Z flag
+005F   1903           00247    btfsc STATUS, Z ; zero?
+0060   0008           00248    return
+                      00249 
+0061   0A??           00250    incf audioFreqCnt, F
+0062   0A??           00251    incf audioDurCnt, F
+                      00252 
+                      00253    ; if (G_duration_cnt != G_duration) {
+0063   08??           00254    movf audioDur, W
+0064   02??           00255    subwf audioDurCnt, W
+0065   1903           00256    btfsc STATUS, Z ; zero?
+0066   3???           00257    bra audioDone
+                      00258 
+                      00259    ;   if (G_freq_cnt == G_freq)  {
+0067   08??           00260    movf audioFreq, W
+0068   02??           00261    subwf audioFreqCnt, W
+0069   1903           00262    btfsc STATUS, Z ; zero?
+006A   3???           00263    bra audioOff
+006B   3000           00264    movlw 0x0
+006C   00??           00265    movwf audioFreqCnt
+                      00266 
+006D   0022           00267    banksel LATA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+006E   160C           00268    bsf LATA, LATA4 ; on
+006F   0008           00269    return
+                      00270    ;      G_freq_cnt = 0;
+                      00271    ;      LATAbits.LATA9 = 1; // on
+                      00272    ;   }
+                      00273    ;   else
+                      00274    ;      LATAbits.LATA9 = 0; // off
+                      00275    ;   }
+0070                  00276 audioDone
+0070   3000           00277    movlw 0x0
+0071   00??           00278    movwf audioDur
+                      00279    ; else {
+                      00280    ;     G_duration = 0;
+                      00281 
+0072                  00282 audioOff
+0072   0022           00283    banksel LATA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0073   120C           00284    bcf LATA, LATA4 ; off
+                      00285    ;    LATAbits.LATA9 = 0; // off
+                      00286    ;    if (G_audioAssetId != 255) assetList[G_audioAssetId].datacb(G_audioAssetId, G_audioFrame) ; /* c
+                            allback routine */
+                      00287 
+0074                  00288 audioRet
+0074   0008           00289    return
+                      00290 ;
+                      00291 ;------------------------------------------------------------------------------
+                      00292 ; MAIN PROGRAM
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00293 ;------------------------------------------------------------------------------
+                      00294 
+0075                  00295 START
+                      00296     ; INTIALIZING PORTA
+0075   0020           00297     banksel PORTA
+0076   018C           00298     clrf PORTA  ; init port A
+                      00299     
+0077   0022           00300     banksel LATA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0078   018C           00301     clrf LATA   ; init data latch
+                      00302     
+0079   0023           00303     banksel ANSELA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+007A   018C           00304     clrf ANSELA
+                      00305 
+                      00306     
+                      00307     ; clock speed
+007B   0021           00308     banksel OSCCON
+                      00309     ; MOVLW B'01111010' ; pll=0, 1111=ircf, x=0, 1x=SCS   oscilator 16mhz
+007C   30F0           00310     movlw B'11110000' ; pll=1, 1110=ircf, x=0, 00=SCS   oscilator 32mhz
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+007D   0099           00311     movwf OSCCON
+007E   0000           00312     nop
+007F   0000           00313     nop
+0080   0000           00314     nop ; clock stable ?
+                      00315     
+                      00316     ; set port I/O direction
+0081   0021           00317     banksel TRISA
+                      00318     ; MOVLW B'00001000' ; RA0=out/red, RA1=out/IR LED, in=button,  RA2=OUT/red LED,  RA3=in/IR recv, RA4
+                             = out speaker, RA5: out/blue
+0082   300A           00319     movlw B'00001010' ; RA0=out/red, RA1=out/IR LED, in=button,  RA2=OUT/red LED,  RA3=in/IR recv, RA4 =
+                             out speaker, RA5: out/blue
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0083   008C           00320     movwf TRISA
+                      00321 
+                      00322     ; enable weak pull-ups
+0084   0021           00323     banksel OPTION_REG
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0085   1395           00324     bcf OPTION_REG, NOT_WPUEN ; pull up enable bit is active low
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0086   1195           00325     bcf OPTION_REG, PSA ; enable prescaler
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0087   1115           00326     bcf OPTION_REG, PS2_OPTION_REG ; prescaler0,1,2 = 0x001 = 4
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0088   1095           00327     bcf OPTION_REG, PS1_OPTION_REG ; prescaler0,1,2 = 0x001 = 4
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0089   1015           00328     bcf OPTION_REG, PS0_OPTION_REG ; prescaler0,1,2 = 0x001 = 4
+                      00329 
+                      00330     ; pull-up on button
+                      00331     ; BANKSEL WPUA
+                      00332     ; BSF WPUA, RA1
+                      00333 
+                      00334     ; 
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00335     ; init vars before any chance of interupt
+                      00336     ; 
+008A   30FF           00337     movlw 0xFF
+008B   00F0           00338     movwf buttonCnt
+                      00339 
+008C   30FF           00340     movlw 0xFF  ; pwm period
+008D   00F9           00341     movwf pwm  ; 
+                      00342 
+008E   30F0           00343     movlw 0xF0
+008F   00F5           00344     movwf red  ; 
+                      00345 
+0090   3020           00346     movlw 0x20
+0091   00F6           00347     movwf green  ; 
+                      00348 
+0092   30A0           00349     movlw 0xA0
+0093   00F7           00350     movwf blue  ; 
+                      00351 
+0094   3000           00352     movlw 0x0
+0095   00F8           00353     movwf speaker  ; 
+                      00354 
+                      00355 ; init audio
+0096   002?           00356     banksel audioDur
+                      00357 
+0097   3000           00358     movlw 0x0 ; decimal
+0098   00??           00359     movwf audioFreqCnt
+0099   3000           00360     movlw 0x0 ; decimal
+009A   00??           00361     movwf audioDurCnt
+                      00362 
+009B   3000           00363     movlw 0x0 ; decimal
+009C   00??           00364     movwf audioFreq
+009D   3000           00365     movlw 0x0 ; decimal
+009E   00??           00366     movwf audioDur
+                      00367 
+                      00368     ; 
+                      00369     ; timer0 clock source
+                      00370     ; 
+009F   0021           00371     banksel OPTION_REG
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00A0   1295           00372     bcf OPTION_REG, TMR0CS ; int clock-> Fosc/4
+                      00373 
+                      00374     ; timer0 int enable
+00A1   0020           00375     banksel INTCON
+00A2   168B           00376     bsf INTCON, TMR0IE
+                      00377 
+                      00378     ; global interupts enable 
+00A3   178B           00379     bsf  INTCON, GIE 
+                      00380 
+                      00381 ;    BANKSEL LATA
+                      00382 ;    MOVLW B'00110100' ; ON  '00110100' LED 2,4,5 ON, IR 1 LED OFF
+                      00383 ;    MOVWF LATA
+                      00384 
+00A4                  00385 TOP
+                      00386 
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A4   0870           00387     movf  buttonCnt, W
+00A5   00F7           00388     movwf blue
+                      00389     ;movwf green
+                      00390     ;rrf   red, F
+                      00391     ;rrf   green, F
+                      00392     ;rrf   blue, F
+                      00393 
+                      00394 ;    movf  buttonCnt, W
+                      00395 ;    movwf speaker
+                      00396 
+00A6   3???           00397     BRA TOP
+                      00398 ;    call SendRC5 ; force linker to include IR code for space check
+39A4 1CFF             00399     END
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ABDEN                             00000000
+ABDOVF                            00000007
+ADCON0                            0000009D
+ADCON1                            0000009E
+ADCON2                            0000009F
+ADCS0                             00000004
+ADCS1                             00000005
+ADCS2                             00000006
+ADDEN                             00000003
+ADFM                              00000007
+ADFVR0                            00000000
+ADFVR1                            00000001
+ADGO                              00000001
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADPREF0                           00000000
+ADPREF1                           00000001
+ADRES                             0000009B
+ADRESH                            0000009C
+ADRESL                            0000009B
+ANSA0                             00000000
+ANSA1                             00000001
+ANSA2                             00000002
+ANSA4                             00000004
+ANSELA                            0000018C
+APFCON                            0000011D
+APFCON0                           0000011D
+BAUDCON                           0000019F
+BORCON                            00000116
+BORFS                             00000006
+BORRDY                            00000000
+BRG16                             00000003
+BRGH                              00000002
+BSR                               00000008
+BSR0                              00000000
+BSR1                              00000001
+BSR2                              00000002
+BSR3                              00000003
+BSR4                              00000004
+BSR_SHAD                          00000FE6
+C                                 00000000
+C1HYS                             00000001
+C1IE                              00000005
+C1IF                              00000005
+C1INTN                            00000006
+C1INTP                            00000007
+C1NCH0                            00000000
+C1NCH1                            00000001
+C1NCH2                            00000002
+C1OE                              00000005
+C1ON                              00000007
+C1OUT                             00000006
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C1PCH0                            00000004
+C1PCH1                            00000005
+C1POL                             00000004
+C1SP                              00000002
+C1SYNC                            00000000
+CDAFVR0                           00000002
+CDAFVR1                           00000003
+CFGS                              00000006
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CHS4                              00000006
+CM1CON0                           00000111
+CM1CON1                           00000112
+CMOUT                             00000115
+CREN                              00000004
+CS0                               00000000
+CS1                               00000001
+CSRC                              00000007
+CWG1CON0                          00000693
+CWG1CON1                          00000694
+CWG1CON2                          00000695
+CWG1DBF                           00000692
+CWG1DBF0                          00000000
+CWG1DBF1                          00000001
+CWG1DBF2                          00000002
+CWG1DBF3                          00000003
+CWG1DBF4                          00000004
+CWG1DBF5                          00000005
+CWG1DBR                           00000691
+CWG1DBR0                          00000000
+CWG1DBR1                          00000001
+CWG1DBR2                          00000002
+CWG1DBR3                          00000003
+CWG1DBR4                          00000004
+CWG1DBR5                          00000005
+CWGASEL                           00000006
+CWGBSEL                           00000005
+C_SHAD                            00000000
+DACCON0                           00000118
+DACCON1                           00000119
+DACEN                             00000007
+DACLPS                            00000006
+DACOE                             00000005
+DACPSS0                           00000002
+DACPSS1                           00000003
+DACR0                             00000000
+DACR1                             00000001
+DACR2                             00000002
+DACR3                             00000003
+DACR4                             00000004
+DC                                00000001
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+DCIE                              00000001
+DCIF                              00000001
+DC_SHAD                           00000001
+EN                                00000007
+F                                 00000001
+FERR                              00000002
+FREE                              00000004
+FSR0                              00000004
+FSR0H                             00000005
+FSR0H_SHAD                        00000FE9
+FSR0L                             00000004
+FSR0L_SHAD                        00000FE8
+FSR0_SHAD                         00000FE8
+FSR1                              00000006
+FSR1H                             00000007
+FSR1H_SHAD                        00000FEB
+FSR1L                             00000006
+FSR1L_SHAD                        00000FEA
+FSR1_SHAD                         00000FEA
+FVRCON                            00000117
+FVREN                             00000007
+FVRRDY                            00000006
+G1ARSEN                           00000006
+G1ASDLA0                          00000004
+G1ASDLA1                          00000005
+G1ASDLB0                          00000006
+G1ASDLB1                          00000007
+G1ASDSC1                          00000002
+G1ASDSFLT                         00000001
+G1ASE                             00000007
+G1CS0                             00000000
+G1EN                              00000007
+G1IS0                             00000000
+G1IS1                             00000001
+G1IS2                             00000002
+G1OEA                             00000005
+G1OEB                             00000006
+G1POLA                            00000003
+G1POLB                            00000004
+GIE                               00000007
+GO                                00000001
+GO_NOT_DONE                       00000001
+HFIOFL                            00000003
+HFIOFR                            00000004
+HFIOFS                            00000000
+INDF0                             00000000
+INDF1                             00000001
+INLVLA                            0000038C
+INLVLA0                           00000000
+INLVLA1                           00000001
+INLVLA2                           00000002
+INLVLA3                           00000003
+INLVLA4                           00000004
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+INLVLA5                           00000005
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IOCAF                             00000393
+IOCAF0                            00000000
+IOCAF1                            00000001
+IOCAF2                            00000002
+IOCAF3                            00000003
+IOCAF4                            00000004
+IOCAF5                            00000005
+IOCAN                             00000392
+IOCAN0                            00000000
+IOCAN1                            00000001
+IOCAN2                            00000002
+IOCAN3                            00000003
+IOCAN4                            00000004
+IOCAN5                            00000005
+IOCAP                             00000391
+IOCAP0                            00000000
+IOCAP1                            00000001
+IOCAP2                            00000002
+IOCAP3                            00000003
+IOCAP4                            00000004
+IOCAP5                            00000005
+IOCIE                             00000003
+IOCIF                             00000000
+IRCF0                             00000003
+IRCF1                             00000004
+IRCF2                             00000005
+IRCF3                             00000006
+L0                                00000056
+LATA                              0000010C
+LATA0                             00000000
+LATA1                             00000001
+LATA2                             00000002
+LATA4                             00000004
+LATA5                             00000005
+LDA                               00000007
+LDS0                              00000000
+LDS1                              00000001
+LDT                               00000006
+LFIOFR                            00000001
+LOOP0                             00000004
+LOOP1                             00000005
+LOOPCNT                           00000006
+LWLO                              00000005
+MC1OUT                            00000000
+MFIOFR                            00000002
+MODE0                             00000002
+MODE1                             00000003
+MPWM1EN                           00000000
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+MPWM1LD                           00000000
+MPWM1OUT                          00000000
+MPWM2EN                           00000001
+MPWM2LD                           00000001
+MPWM2OUT                          00000001
+MPWM3EN                           00000002
+MPWM3LD                           00000002
+MPWM3OUT                          00000002
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RI                            00000002
+NOT_RMCLR                         00000003
+NOT_RWDT                          00000004
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_WPUEN                         00000007
+ODA0                              00000000
+ODA1                              00000001
+ODA2                              00000002
+ODA4                              00000004
+ODA5                              00000005
+ODCONA                            0000028C
+OE                                00000006
+OERR                              00000001
+OFIE                              00000003
+OFIF                              00000003
+OFM0                              00000005
+OFM1                              00000006
+OFO                               00000004
+OFS0                              00000000
+OFS1                              00000001
+OPTION_REG                        00000095
+OSCCON                            00000099
+OSCSTAT                           0000009A
+OSCTUNE                           00000098
+OSTS                              00000005
+OUT                               00000005
+P1SEL                             00000000
+P2SEL                             00000001
+PCL                               00000002
+PCLATH                            0000000A
+PCLATH_SHAD                       00000FE7
+PCON                              00000096
+PEIE                              00000006
+PHIE                              00000002
+PHIF                              00000002
+PIE1                              00000091
+PIE2                              00000092
+PIE3                              00000093
+PIR1                              00000011
+PIR2                              00000012
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PIR3                              00000013
+PLLR                              00000006
+PMADR                             00000191
+PMADRH                            00000192
+PMADRL                            00000191
+PMCON1                            00000195
+PMCON2                            00000196
+PMDAT                             00000193
+PMDATH                            00000194
+PMDATL                            00000193
+POL                               00000004
+PORTA                             0000000C
+PR2                               0000001B
+PRIE                              00000000
+PRIF                              00000000
+PS0_OPTION_REG                    00000000
+PS0_PWM1CLKCON                    00000004
+PS0_PWM2CLKCON                    00000004
+PS0_PWM3CLKCON                    00000004
+PS1_OPTION_REG                    00000001
+PS1_PWM1CLKCON                    00000005
+PS1_PWM2CLKCON                    00000005
+PS1_PWM3CLKCON                    00000005
+PS2_OPTION_REG                    00000002
+PS2_PWM1CLKCON                    00000006
+PS2_PWM2CLKCON                    00000006
+PS2_PWM3CLKCON                    00000006
+PSA                               00000003
+PWM1CLKCON                        00000D9E
+PWM1CON                           00000D9B
+PWM1CS0                           00000000
+PWM1CS1                           00000001
+PWM1DC                            00000D93
+PWM1DCH                           00000D94
+PWM1DCH0                          00000000
+PWM1DCH1                          00000001
+PWM1DCH2                          00000002
+PWM1DCH3                          00000003
+PWM1DCH4                          00000004
+PWM1DCH5                          00000005
+PWM1DCH6                          00000006
+PWM1DCH7                          00000007
+PWM1DCIE                          00000001
+PWM1DCIF                          00000001
+PWM1DCL                           00000D93
+PWM1DCL0                          00000000
+PWM1DCL1                          00000001
+PWM1DCL2                          00000002
+PWM1DCL3                          00000003
+PWM1DCL4                          00000004
+PWM1DCL5                          00000005
+PWM1DCL6                          00000006
+PWM1DCL7                          00000007
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM1EN                            00000007
+PWM1EN_A                          00000000
+PWM1IE                            00000004
+PWM1IF                            00000004
+PWM1INTCON                        00000D9C
+PWM1INTE                          00000D9C
+PWM1INTF                          00000D9D
+PWM1INTFLG                        00000D9D
+PWM1LD                            00000007
+PWM1LDA_A                         00000000
+PWM1LDCON                         00000D9F
+PWM1LDM                           00000006
+PWM1LDS0                          00000000
+PWM1LDS1                          00000001
+PWM1MODE0                         00000002
+PWM1MODE1                         00000003
+PWM1OE                            00000006
+PWM1OF                            00000D97
+PWM1OFCON                         00000DA0
+PWM1OFH                           00000D98
+PWM1OFH0                          00000000
+PWM1OFH1                          00000001
+PWM1OFH2                          00000002
+PWM1OFH3                          00000003
+PWM1OFH4                          00000004
+PWM1OFH5                          00000005
+PWM1OFH6                          00000006
+PWM1OFH7                          00000007
+PWM1OFIE                          00000003
+PWM1OFIF                          00000003
+PWM1OFL                           00000D97
+PWM1OFL0                          00000000
+PWM1OFL1                          00000001
+PWM1OFL2                          00000002
+PWM1OFL3                          00000003
+PWM1OFL4                          00000004
+PWM1OFL5                          00000005
+PWM1OFL6                          00000006
+PWM1OFL7                          00000007
+PWM1OFM0                          00000005
+PWM1OFM1                          00000006
+PWM1OFMC                          00000004
+PWM1OFS0                          00000000
+PWM1OFS1                          00000001
+PWM1OUT                           00000005
+PWM1OUT_A                         00000000
+PWM1PH                            00000D91
+PWM1PHH                           00000D92
+PWM1PHH0                          00000000
+PWM1PHH1                          00000001
+PWM1PHH2                          00000002
+PWM1PHH3                          00000003
+PWM1PHH4                          00000004
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM1PHH5                          00000005
+PWM1PHH6                          00000006
+PWM1PHH7                          00000007
+PWM1PHIE                          00000002
+PWM1PHIF                          00000002
+PWM1PHL                           00000D91
+PWM1PHL0                          00000000
+PWM1PHL1                          00000001
+PWM1PHL2                          00000002
+PWM1PHL3                          00000003
+PWM1PHL4                          00000004
+PWM1PHL5                          00000005
+PWM1PHL6                          00000006
+PWM1PHL7                          00000007
+PWM1POL                           00000004
+PWM1PR                            00000D95
+PWM1PRH                           00000D96
+PWM1PRH0                          00000000
+PWM1PRH1                          00000001
+PWM1PRH2                          00000002
+PWM1PRH3                          00000003
+PWM1PRH4                          00000004
+PWM1PRH5                          00000005
+PWM1PRH6                          00000006
+PWM1PRH7                          00000007
+PWM1PRIE                          00000000
+PWM1PRIF                          00000000
+PWM1PRL                           00000D95
+PWM1PRL0                          00000000
+PWM1PRL1                          00000001
+PWM1PRL2                          00000002
+PWM1PRL3                          00000003
+PWM1PRL4                          00000004
+PWM1PRL5                          00000005
+PWM1PRL6                          00000006
+PWM1PRL7                          00000007
+PWM1PS0                           00000004
+PWM1PS1                           00000005
+PWM1PS2                           00000006
+PWM1TMR                           00000D99
+PWM1TMRH                          00000D9A
+PWM1TMRH0                         00000000
+PWM1TMRH1                         00000001
+PWM1TMRH2                         00000002
+PWM1TMRH3                         00000003
+PWM1TMRH4                         00000004
+PWM1TMRH5                         00000005
+PWM1TMRH6                         00000006
+PWM1TMRH7                         00000007
+PWM1TMRL                          00000D99
+PWM1TMRL0                         00000000
+PWM1TMRL1                         00000001
+PWM1TMRL2                         00000002
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM1TMRL3                         00000003
+PWM1TMRL4                         00000004
+PWM1TMRL5                         00000005
+PWM1TMRL6                         00000006
+PWM1TMRL7                         00000007
+PWM2CLKCON                        00000DAE
+PWM2CON                           00000DAB
+PWM2CS0                           00000000
+PWM2CS1                           00000001
+PWM2DC                            00000DA3
+PWM2DCH                           00000DA4
+PWM2DCH0                          00000000
+PWM2DCH1                          00000001
+PWM2DCH2                          00000002
+PWM2DCH3                          00000003
+PWM2DCH4                          00000004
+PWM2DCH5                          00000005
+PWM2DCH6                          00000006
+PWM2DCH7                          00000007
+PWM2DCIE                          00000001
+PWM2DCIF                          00000001
+PWM2DCL                           00000DA3
+PWM2DCL0                          00000000
+PWM2DCL1                          00000001
+PWM2DCL2                          00000002
+PWM2DCL3                          00000003
+PWM2DCL4                          00000004
+PWM2DCL5                          00000005
+PWM2DCL6                          00000006
+PWM2DCL7                          00000007
+PWM2EN                            00000007
+PWM2EN_A                          00000001
+PWM2IE                            00000005
+PWM2IF                            00000005
+PWM2INTCON                        00000DAC
+PWM2INTE                          00000DAC
+PWM2INTF                          00000DAD
+PWM2INTFLG                        00000DAD
+PWM2LD                            00000007
+PWM2LDA_A                         00000001
+PWM2LDCON                         00000DAF
+PWM2LDM                           00000006
+PWM2LDS0                          00000000
+PWM2LDS1                          00000001
+PWM2MODE0                         00000002
+PWM2MODE1                         00000003
+PWM2OE                            00000006
+PWM2OF                            00000DA7
+PWM2OFCON                         00000DB0
+PWM2OFH                           00000DA8
+PWM2OFH0                          00000000
+PWM2OFH1                          00000001
+PWM2OFH2                          00000002
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM2OFH3                          00000003
+PWM2OFH4                          00000004
+PWM2OFH5                          00000005
+PWM2OFH6                          00000006
+PWM2OFH7                          00000007
+PWM2OFIE                          00000003
+PWM2OFIF                          00000003
+PWM2OFL                           00000DA7
+PWM2OFL0                          00000000
+PWM2OFL1                          00000001
+PWM2OFL2                          00000002
+PWM2OFL3                          00000003
+PWM2OFL4                          00000004
+PWM2OFL5                          00000005
+PWM2OFL6                          00000006
+PWM2OFL7                          00000007
+PWM2OFM0                          00000005
+PWM2OFM1                          00000006
+PWM2OFMC                          00000004
+PWM2OFS0                          00000000
+PWM2OFS1                          00000001
+PWM2OUT                           00000005
+PWM2OUT_A                         00000001
+PWM2PH                            00000DA1
+PWM2PHH                           00000DA2
+PWM2PHH0                          00000000
+PWM2PHH1                          00000001
+PWM2PHH2                          00000002
+PWM2PHH3                          00000003
+PWM2PHH4                          00000004
+PWM2PHH5                          00000005
+PWM2PHH6                          00000006
+PWM2PHH7                          00000007
+PWM2PHIE                          00000002
+PWM2PHIF                          00000002
+PWM2PHL                           00000DA1
+PWM2PHL0                          00000000
+PWM2PHL1                          00000001
+PWM2PHL2                          00000002
+PWM2PHL3                          00000003
+PWM2PHL4                          00000004
+PWM2PHL5                          00000005
+PWM2PHL6                          00000006
+PWM2PHL7                          00000007
+PWM2POL                           00000004
+PWM2PR                            00000DA5
+PWM2PRH                           00000DA6
+PWM2PRH0                          00000000
+PWM2PRH1                          00000001
+PWM2PRH2                          00000002
+PWM2PRH3                          00000003
+PWM2PRH4                          00000004
+PWM2PRH5                          00000005
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM2PRH6                          00000006
+PWM2PRH7                          00000007
+PWM2PRIE                          00000000
+PWM2PRIF                          00000000
+PWM2PRL                           00000DA5
+PWM2PRL0                          00000000
+PWM2PRL1                          00000001
+PWM2PRL2                          00000002
+PWM2PRL3                          00000003
+PWM2PRL4                          00000004
+PWM2PRL5                          00000005
+PWM2PRL6                          00000006
+PWM2PRL7                          00000007
+PWM2PS0                           00000004
+PWM2PS1                           00000005
+PWM2PS2                           00000006
+PWM2TMR                           00000DA9
+PWM2TMRH                          00000DAA
+PWM2TMRH0                         00000000
+PWM2TMRH1                         00000001
+PWM2TMRH2                         00000002
+PWM2TMRH3                         00000003
+PWM2TMRH4                         00000004
+PWM2TMRH5                         00000005
+PWM2TMRH6                         00000006
+PWM2TMRH7                         00000007
+PWM2TMRL                          00000DA9
+PWM2TMRL0                         00000000
+PWM2TMRL1                         00000001
+PWM2TMRL2                         00000002
+PWM2TMRL3                         00000003
+PWM2TMRL4                         00000004
+PWM2TMRL5                         00000005
+PWM2TMRL6                         00000006
+PWM2TMRL7                         00000007
+PWM3CLKCON                        00000DBE
+PWM3CON                           00000DBB
+PWM3CS0                           00000000
+PWM3CS1                           00000001
+PWM3DC                            00000DB3
+PWM3DCH                           00000DB4
+PWM3DCH0                          00000000
+PWM3DCH1                          00000001
+PWM3DCH2                          00000002
+PWM3DCH3                          00000003
+PWM3DCH4                          00000004
+PWM3DCH5                          00000005
+PWM3DCH6                          00000006
+PWM3DCH7                          00000007
+PWM3DCIE                          00000001
+PWM3DCIF                          00000001
+PWM3DCL                           00000DB3
+PWM3DCL0                          00000000
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM3DCL1                          00000001
+PWM3DCL2                          00000002
+PWM3DCL3                          00000003
+PWM3DCL4                          00000004
+PWM3DCL5                          00000005
+PWM3DCL6                          00000006
+PWM3DCL7                          00000007
+PWM3EN                            00000007
+PWM3EN_A                          00000002
+PWM3IE                            00000006
+PWM3IF                            00000006
+PWM3INTCON                        00000DBC
+PWM3INTE                          00000DBC
+PWM3INTF                          00000DBD
+PWM3INTFLG                        00000DBD
+PWM3LD                            00000007
+PWM3LDA_A                         00000002
+PWM3LDCON                         00000DBF
+PWM3LDM                           00000006
+PWM3LDS0                          00000000
+PWM3LDS1                          00000001
+PWM3MODE0                         00000002
+PWM3MODE1                         00000003
+PWM3OE                            00000006
+PWM3OF                            00000DB7
+PWM3OFCON                         00000DC0
+PWM3OFH                           00000DB8
+PWM3OFH0                          00000000
+PWM3OFH1                          00000001
+PWM3OFH2                          00000002
+PWM3OFH3                          00000003
+PWM3OFH4                          00000004
+PWM3OFH5                          00000005
+PWM3OFH6                          00000006
+PWM3OFH7                          00000007
+PWM3OFIE                          00000003
+PWM3OFIF                          00000003
+PWM3OFL                           00000DB7
+PWM3OFL0                          00000000
+PWM3OFL1                          00000001
+PWM3OFL2                          00000002
+PWM3OFL3                          00000003
+PWM3OFL4                          00000004
+PWM3OFL5                          00000005
+PWM3OFL6                          00000006
+PWM3OFL7                          00000007
+PWM3OFM0                          00000005
+PWM3OFM1                          00000006
+PWM3OFMC                          00000004
+PWM3OFS0                          00000000
+PWM3OFS1                          00000001
+PWM3OUT                           00000005
+PWM3OUT_A                         00000002
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM3PH                            00000DB1
+PWM3PHH                           00000DB2
+PWM3PHH0                          00000000
+PWM3PHH1                          00000001
+PWM3PHH2                          00000002
+PWM3PHH3                          00000003
+PWM3PHH4                          00000004
+PWM3PHH5                          00000005
+PWM3PHH6                          00000006
+PWM3PHH7                          00000007
+PWM3PHIE                          00000002
+PWM3PHIF                          00000002
+PWM3PHL                           00000DB1
+PWM3PHL0                          00000000
+PWM3PHL1                          00000001
+PWM3PHL2                          00000002
+PWM3PHL3                          00000003
+PWM3PHL4                          00000004
+PWM3PHL5                          00000005
+PWM3PHL6                          00000006
+PWM3PHL7                          00000007
+PWM3POL                           00000004
+PWM3PR                            00000DB5
+PWM3PRH                           00000DB6
+PWM3PRH0                          00000000
+PWM3PRH1                          00000001
+PWM3PRH2                          00000002
+PWM3PRH3                          00000003
+PWM3PRH4                          00000004
+PWM3PRH5                          00000005
+PWM3PRH6                          00000006
+PWM3PRH7                          00000007
+PWM3PRIE                          00000000
+PWM3PRIF                          00000000
+PWM3PRL                           00000DB5
+PWM3PRL0                          00000000
+PWM3PRL1                          00000001
+PWM3PRL2                          00000002
+PWM3PRL3                          00000003
+PWM3PRL4                          00000004
+PWM3PRL5                          00000005
+PWM3PRL6                          00000006
+PWM3PRL7                          00000007
+PWM3PS0                           00000004
+PWM3PS1                           00000005
+PWM3PS2                           00000006
+PWM3TMR                           00000DB9
+PWM3TMRH                          00000DBA
+PWM3TMRH0                         00000000
+PWM3TMRH1                         00000001
+PWM3TMRH2                         00000002
+PWM3TMRH3                         00000003
+PWM3TMRH4                         00000004
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PWM3TMRH5                         00000005
+PWM3TMRH6                         00000006
+PWM3TMRH7                         00000007
+PWM3TMRL                          00000DB9
+PWM3TMRL0                         00000000
+PWM3TMRL1                         00000001
+PWM3TMRL2                         00000002
+PWM3TMRL3                         00000003
+PWM3TMRL4                         00000004
+PWM3TMRL5                         00000005
+PWM3TMRL6                         00000006
+PWM3TMRL7                         00000007
+PWMEN                             00000D8E
+PWMLD                             00000D8F
+PWMOUT                            00000D90
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             00000199
+RCSTA                             0000019D
+RD                                00000000
+RX9                               00000006
+RX9D                              00000000
+RXDTSEL                           00000007
+SBOREN                            00000007
+SCKP                              00000004
+SCS0                              00000000
+SCS1                              00000001
+SENDB                             00000003
+SLRA0                             00000000
+SLRA1                             00000001
+SLRA2                             00000002
+SLRA4                             00000004
+SLRA5                             00000005
+SLRCONA                           0000030C
+SPBRG                             0000019B
+SPBRGH                            0000019C
+SPBRGL                            0000019B
+SPEN                              00000007
+SPLLEN                            00000007
+SREN                              00000005
+START                             00000075
+STATUS                            00000003
+STATUS_SHAD                       00000FE4
+STKOVF                            00000007
+STKPTR                            00000FED
+STKUNF                            00000006
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SWDTEN                            00000000
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000018
+T1GCON                            00000019
+T1GGO                             00000003
+T1GGO_NOT_DONE                    00000003
+T1GPOL                            00000006
+T1GSEL                            00000003
+T1GSPM                            00000004
+T1GSS0                            00000000
+T1GSS1                            00000001
+T1GTM                             00000005
+T1GVAL                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             0000001C
+T2OUTPS0                          00000003
+T2OUTPS1                          00000004
+T2OUTPS2                          00000005
+T2OUTPS3                          00000006
+TMR0                              00000015
+TMR0CS                            00000005
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR0SE                            00000004
+TMR1                              00000016
+TMR1CS0                           00000006
+TMR1CS1                           00000007
+TMR1GE                            00000007
+TMR1GIE                           00000007
+TMR1GIF                           00000007
+TMR1H                             00000017
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             00000016
+TMR1ON                            00000000
+TMR2                              0000001A
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOP                               000000A4
+TOS                               00000FEE
+TOSH                              00000FEF
+TOSL                              00000FEE
+TRIGSEL0                          00000004
+TRIGSEL1                          00000005
+TRIGSEL2                          00000006
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRIGSEL3                          00000007
+TRISA                             0000008C
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRMT                              00000001
+TSEN                              00000005
+TSRNG                             00000004
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TUN5                              00000005
+TX9                               00000006
+TX9D                              00000000
+TXCKSEL                           00000002
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             0000019A
+TXSTA                             0000019E
+VREGCON                           00000197
+VREGPM0                           00000000
+VREGPM1                           00000001
+W                                 00000000
+WDTCON                            00000097
+WDTPS0                            00000001
+WDTPS1                            00000002
+WDTPS2                            00000003
+WDTPS3                            00000004
+WDTPS4                            00000005
+WPUA                              0000020C
+WPUA0                             00000000
+WPUA1                             00000001
+WPUA2                             00000002
+WPUA3                             00000003
+WPUA4                             00000004
+WPUA5                             00000005
+WR                                00000001
+WREG                              00000009
+WREG_SHAD                         00000FE5
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+Z                                 00000002
+Z_SHAD                            00000002
+_BOREN_NSLEEP                     00003DFF
+_BOREN_OFF                        000039FF
+_BOREN_ON                         00003FFF
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_BOREN_SBODEN                     00003BFF
+_BORV_19                          00003FFF
+_BORV_HI                          00003BFF
+_BORV_LO                          00003FFF
+_CLKOUTEN_OFF                     00003FFF
+_CLKOUTEN_ON                      000037FF
+_CONFIG1                          00008007
+_CONFIG2                          00008008
+_CP_OFF                           00003FFF
+_CP_ON                            00003F7F
+_DEVID1                           00008006
+_FOSC_ECH                         00003FFF
+_FOSC_ECL                         00003FFD
+_FOSC_ECM                         00003FFE
+_FOSC_INTOSC                      00003FFC
+_IDLOC0                           00008000
+_IDLOC1                           00008001
+_IDLOC2                           00008002
+_IDLOC3                           00008003
+_LPBOREN_OFF                      00003FFF
+_LPBOREN_ON                       000037FF
+_LVP_OFF                          00001FFF
+_LVP_ON                           00003FFF
+_MCLRE_OFF                        00003FBF
+_MCLRE_ON                         00003FFF
+_PLLEN_OFF                        00003EFF
+_PLLEN_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FDF
+_STVREN_OFF                       00003DFF
+_STVREN_ON                        00003FFF
+_WDTE_NSLEEP                      00003FF7
+_WDTE_OFF                         00003FE7
+_WDTE_ON                          00003FFF
+_WDTE_SWDTEN                      00003FEF
+_WRT_ALL                          00003FFC
+_WRT_BOOT                         00003FFE
+_WRT_HALF                         00003FFD
+_WRT_OFF                          00003FFF
+__12F1572                         00000001
+audioDone                         00000070
+audioDur                          00000000
+audioDurCnt                       00000001
+audioFreq                         00000002
+audioFreqCnt                      00000003
+audioOff                          00000072
+audioRet                          00000074
+blue                              00000077
+bluepwm                           00000073
+buttonCnt                         00000070
+delay                             00000050
+doAudio                           0000005D
+doNote                            00000018
+MPASM 5.73  /HOME/PAUL/BADGE_REPO/MAKER2017S   7-16-2017  22:34:57         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+done                              0000004C
+green                             00000076
+greenpwm                          00000072
+l_blue                            00000028
+l_blueon                          0000002E
+l_green                           0000002F
+l_greenon                         00000035
+l_pwm                             0000003D
+l_red                             00000036
+l_redon                           0000003C
+pwm                               00000079
+red                               00000075
+redpwm                            00000071
+skipNote                          00000022
+speaker                           00000078
+speakerpwm                        00000074
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :    24 reported,     0 suppressed
+
+

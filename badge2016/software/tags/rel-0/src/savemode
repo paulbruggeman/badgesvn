@@ -1,0 +1,5 @@
+#!/bin/tcsh -f
+
+#find [a-zA-Z0-9]* -printf "chmod 0%m \"%p\"\n" | sed -e '/\/\./d' > modes
+
+find [a-zA-Z0-9]* -printf 'chmod 0%m %p; touch -d "%AY%Am%Ad %AT" %p\n' | sed -e '/\/\./d' > modes

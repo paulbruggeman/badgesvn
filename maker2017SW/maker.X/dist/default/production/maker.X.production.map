@@ -1,0 +1,86 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Mon Jul 17 02:34:58 2017
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x000146
+.config_8007_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x008007    program   0x000002
+.config_8008_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x008008    program   0x000002
+                   .udata      udata   0x000020       data   0x000007
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x0000a6      
+                            0x008007    0x008008      
+            168 out of 2055 program addresses used, program memory utilization is 8%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                       L0   0x000056    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    START   0x000075    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                      TOP   0x0000a4    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                audioDone   0x000070    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 audioOff   0x000072    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 audioRet   0x000074    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    delay   0x000050    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  doAudio   0x00005d    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                   doNote   0x000018    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                     done   0x00004c    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                   l_blue   0x000028    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 l_blueon   0x00002e    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  l_green   0x00002f    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                l_greenon   0x000035    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    l_pwm   0x00003d    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    l_red   0x000036    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  l_redon   0x00003c    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 skipNote   0x000022    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    LOOP0   0x000024       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    LOOP1   0x000025       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  LOOPCNT   0x000026       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 audioDur   0x000020       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+              audioDurCnt   0x000021       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                audioFreq   0x000022       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+             audioFreqCnt   0x000023       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   doNote   0x000018    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 skipNote   0x000022    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                   l_blue   0x000028    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 l_blueon   0x00002e    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  l_green   0x00002f    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                l_greenon   0x000035    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    l_red   0x000036    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  l_redon   0x00003c    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    l_pwm   0x00003d    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                     done   0x00004c    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    delay   0x000050    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                       L0   0x000056    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  doAudio   0x00005d    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                audioDone   0x000070    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 audioOff   0x000072    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 audioRet   0x000074    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    START   0x000075    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                      TOP   0x0000a4    program     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                 audioDur   0x000020       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+              audioDurCnt   0x000021       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                audioFreq   0x000022       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+             audioFreqCnt   0x000023       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    LOOP0   0x000024       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                    LOOP1   0x000025       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+                  LOOPCNT   0x000026       data     static /home/paul/badge_repo/maker2017SW/maker.X/main.asm
+
+

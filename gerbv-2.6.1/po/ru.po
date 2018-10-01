@@ -1,0 +1,3153 @@
+# English translations for gerbv package.
+# Copyright (C) 2014 gEDA Developers
+# This file is distributed under the same license as the gerbv package.
+#  <paul@bling.localdomain>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gerbv 2.6.1\n"
+"Report-Msgid-Bugs-To: gerbv-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2014-03-18 21:26-0400\n"
+"PO-Revision-Date: 2014-03-18 21:28-0400\n"
+"Last-Translator:  <paul@bling.localdomain>\n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/attribute.c:305
+#, c-format
+msgid "%s():  malloc failed for an array of size %d\n"
+msgstr "%s():  malloc failed for an array of size %d\n"
+
+#: src/attribute.c:323
+msgid "gerbv"
+msgstr "gerbv"
+
+#: src/attribute.c:341
+#, c-format
+msgid "%s():  Adding attribute #%d\n"
+msgstr "%s():  Adding attribute #%d\n"
+
+#: src/attribute.c:507
+#, c-format
+msgid "%s: unknown type of HID attribute\n"
+msgstr "%s: unknown type of HID attribute\n"
+
+#: src/authors.c:2
+msgid "Andreas Andersson aka Pitch"
+msgstr "Andreas Andersson aka Pitch"
+
+#: src/authors.c:3
+msgid "Trevor Blackwell"
+msgstr "Trevor Blackwell"
+
+#: src/authors.c:4
+msgid "Stuart Brorson "
+msgstr "Stuart Brorson "
+
+#: src/authors.c:5
+msgid "David Carr"
+msgstr "David Carr"
+
+#: src/authors.c:6
+msgid "Anders Eriksson"
+msgstr "Anders Eriksson"
+
+#: src/authors.c:7
+msgid "Juergen Haas"
+msgstr "Juergen Haas"
+
+#: src/authors.c:8
+msgid "Julian Lamb "
+msgstr "Julian Lamb "
+
+#: src/authors.c:9
+msgid "Dan McMahill "
+msgstr "Dan McMahill "
+
+#: src/authors.c:10
+msgid "Tomasz Motylewski"
+msgstr "Tomasz Motylewski"
+
+#: src/authors.c:11
+msgid "Stefan Petersen"
+msgstr "Stefan Petersen"
+
+#: src/authors.c:12
+msgid "Joost Witteveen"
+msgstr "Joost Witteveen"
+
+#: src/authors.c:13
+msgid "Joerg Wunsch"
+msgstr "Joerg Wunsch"
+
+#: src/authors.c:14
+msgid "... and many others."
+msgstr "... and many others."
+
+#: src/bugs.c:2
+msgid "Currently KNOWN BUGS"
+msgstr "Currently KNOWN BUGS"
+
+#: src/bugs.c:4
+msgid "All OS:"
+msgstr "All OS:"
+
+#: src/bugs.c:6
+msgid ""
+"Reporting about macro parameters (obtained via analyze -> analyze visible"
+msgstr ""
+"Reporting about macro parameters (obtained via analyze -> analyze visible"
+
+#: src/bugs.c:7
+msgid "Gerber layers, and found in the Aperture definitions tab) incorrectly"
+msgstr "Gerber layers, and found in the Aperture definitions tab) incorrectly"
+
+#: src/bugs.c:8
+msgid "reports the macro parameters found."
+msgstr "reports the macro parameters found."
+
+#: src/callbacks.c:84
+msgid "Gerbv Project"
+msgstr "Gerbv Project"
+
+#: src/callbacks.c:152
+msgid "No layers are currently loaded. A layer must be loaded first."
+msgstr "No layers are currently loaded. A layer must be loaded first."
+
+#: src/callbacks.c:189
+msgid "Do you want to close any open layers and start a new project?"
+msgstr "Do you want to close any open layers and start a new project?"
+
+#: src/callbacks.c:190
+msgid ""
+"Starting a new project will cause all currently open layers to be closed. "
+"Any unsaved changes will be lost."
+msgstr ""
+"Starting a new project will cause all currently open layers to be closed. "
+"Any unsaved changes will be lost."
+
+#: src/callbacks.c:224
+msgid "Do you want to close any open layers and load an existing project?"
+msgstr "Do you want to close any open layers and load an existing project?"
+
+#: src/callbacks.c:225
+msgid ""
+"Loading a project will cause all currently open layers to be closed. Any "
+"unsaved changes will be lost."
+msgstr ""
+"Loading a project will cause all currently open layers to be closed. Any "
+"unsaved changes will be lost."
+
+#: src/callbacks.c:232
+msgid "Open project file..."
+msgstr "Open project file..."
+
+#: src/callbacks.c:248 src/callbacks.c:505
+msgid "All"
+msgstr "All"
+
+#: src/callbacks.c:289
+msgid "Open Gerber, drill, or pick & place file(s)..."
+msgstr "Open Gerber, drill, or pick & place file(s)..."
+
+#: src/callbacks.c:358
+msgid "Gerbv cannot export this file type"
+msgstr "Gerbv cannot export this file type"
+
+#: src/callbacks.c:400
+msgid "Unknown Layer type for merge\n"
+msgstr "Unknown Layer type for merge\n"
+
+#: src/callbacks.c:403
+msgid "Looking for matching files\n"
+msgstr "Looking for matching files\n"
+
+#: src/callbacks.c:408
+#, c-format
+msgid "Adding '%s'\n"
+msgstr "Adding '%s'\n"
+
+#: src/callbacks.c:418
+msgid "Not Enough Files of same type to merge\n"
+msgstr "Not Enough Files of same type to merge\n"
+
+#: src/callbacks.c:421
+msgid "Now merging files\n"
+msgstr "Now merging files\n"
+
+#: src/callbacks.c:449
+msgid "No layer is currently selected"
+msgstr "No layer is currently selected"
+
+#: src/callbacks.c:450
+msgid "Please select a layer and try again."
+msgstr "Please select a layer and try again."
+
+#: src/callbacks.c:457 src/interface.c:337
+msgid "Save project as..."
+msgstr "Save project as..."
+
+#: src/callbacks.c:459
+msgid "Export PS file as..."
+msgstr "Export PS file as..."
+
+#: src/callbacks.c:461
+msgid "Export PDF file as..."
+msgstr "Export PDF file as..."
+
+#: src/callbacks.c:463
+msgid "Export SVG file as..."
+msgstr "Export SVG file as..."
+
+#: src/callbacks.c:465
+msgid "Export PNG file as..."
+msgstr "Export PNG file as..."
+
+#: src/callbacks.c:467
+msgid "Export RS-274X file as..."
+msgstr "Export RS-274X file as..."
+
+#: src/callbacks.c:469
+msgid "Export Excellon drill file as..."
+msgstr "Export Excellon drill file as..."
+
+#: src/callbacks.c:471
+msgid "Export RS-274Xm file as..."
+msgstr "Export RS-274Xm file as..."
+
+#: src/callbacks.c:473
+msgid "Export Excellon drillm file as..."
+msgstr "Export Excellon drillm file as..."
+
+#: src/callbacks.c:475
+msgid "Save layer as..."
+msgstr "Save layer as..."
+
+#: src/callbacks.c:564
+#, c-format
+msgid "Merged visible gerber layers and placed in '%s'\n"
+msgstr "Merged visible gerber layers and placed in '%s'\n"
+
+#: src/callbacks.c:573
+#, c-format
+msgid "Merged visible drill layers and placed in '%s'\n"
+msgstr "Merged visible drill layers and placed in '%s'\n"
+
+#: src/callbacks.c:767 src/callbacks.c:1208
+msgid "General information\n"
+msgstr "General information\n"
+
+#: src/callbacks.c:769 src/callbacks.c:1210
+#, c-format
+msgid "  Active layer count = %d\n"
+msgstr "  Active layer count = %d\n"
+
+#: src/callbacks.c:773
+msgid "Files processed"
+msgstr "Files processed"
+
+#: src/callbacks.c:774
+msgid "Layer number"
+msgstr "Layer number"
+
+#: src/callbacks.c:787
+msgid ""
+"\n"
+"\n"
+"No Gerber files active (visible)!\n"
+msgstr ""
+"\n"
+"\n"
+"No Gerber files active (visible)!\n"
+
+#: src/callbacks.c:790
+msgid ""
+"\n"
+"\n"
+"No errors found in active Gerber file(s)!\n"
+msgstr ""
+"\n"
+"\n"
+"No errors found in active Gerber file(s)!\n"
+
+#: src/callbacks.c:793
+msgid ""
+"\n"
+"\n"
+"Errors found in active Gerber file(s):\n"
+msgstr ""
+"\n"
+"\n"
+"Errors found in active Gerber file(s):\n"
+
+#: src/callbacks.c:800 src/callbacks.c:1240
+msgid "FATAL: "
+msgstr "FATAL: "
+
+#: src/callbacks.c:803 src/callbacks.c:1243
+msgid "ERROR: "
+msgstr "ERROR: "
+
+#: src/callbacks.c:806 src/callbacks.c:1246
+msgid "WARNING: "
+msgstr "WARNING: "
+
+#: src/callbacks.c:809 src/callbacks.c:1249
+msgid "NOTE: "
+msgstr "NOTE: "
+
+#: src/callbacks.c:813 src/callbacks.c:1253
+#, c-format
+msgid "  Layer %d: %s %s"
+msgstr "  Layer %d: %s %s"
+
+#: src/callbacks.c:829 src/callbacks.c:1266
+msgid "G code statistics (all active layers)\n"
+msgstr "G code statistics (all active layers)\n"
+
+#: src/callbacks.c:831 src/callbacks.c:911 src/callbacks.c:934
+#: src/callbacks.c:954 src/callbacks.c:1268 src/callbacks.c:1312
+#: src/callbacks.c:1377
+msgid "<code> = <number of incidences>\n"
+msgstr "<code> = <number of incidences>\n"
+
+#: src/callbacks.c:835
+msgid "Move"
+msgstr "Move"
+
+#: src/callbacks.c:839 src/callbacks.c:1276
+msgid "1X linear interpolation"
+msgstr "1X linear interpolation"
+
+#: src/callbacks.c:843 src/callbacks.c:1280
+msgid "CW interpolation"
+msgstr "CW interpolation"
+
+#: src/callbacks.c:847 src/callbacks.c:1284
+msgid "CCW interpolation"
+msgstr "CCW interpolation"
+
+#: src/callbacks.c:851
+msgid "Comment/ignore block"
+msgstr "Comment/ignore block"
+
+#: src/callbacks.c:855
+msgid "10X linear interpolation"
+msgstr "10X linear interpolation"
+
+#: src/callbacks.c:859
+msgid "0.1X linear interpolation"
+msgstr "0.1X linear interpolation"
+
+#: src/callbacks.c:863
+msgid "0.01X linear interpolation"
+msgstr "0.01X linear interpolation"
+
+#: src/callbacks.c:867
+msgid "Poly fill on"
+msgstr "Poly fill on"
+
+#: src/callbacks.c:871
+msgid "Poly fill off"
+msgstr "Poly fill off"
+
+#: src/callbacks.c:875
+msgid "Tool prepare"
+msgstr "Tool prepare"
+
+#: src/callbacks.c:879
+msgid "Flash prepare"
+msgstr "Flash prepare"
+
+#: src/callbacks.c:883
+msgid "Units = inches"
+msgstr "Units = inches"
+
+#: src/callbacks.c:887
+msgid "Units = mm"
+msgstr "Units = mm"
+
+#: src/callbacks.c:891
+msgid "Disable 360 circ. interpolation"
+msgstr "Disable 360 circ. interpolation"
+
+#: src/callbacks.c:895
+msgid "Enable 360 circ. interpolation"
+msgstr "Enable 360 circ. interpolation"
+
+#: src/callbacks.c:899 src/callbacks.c:1296
+msgid "Absolute units"
+msgstr "Absolute units"
+
+#: src/callbacks.c:903 src/callbacks.c:1300
+msgid "Incremental units"
+msgstr "Incremental units"
+
+#: src/callbacks.c:905 src/callbacks.c:1306
+#, c-format
+msgid "Unknown G codes = %d\n"
+msgstr "Unknown G codes = %d\n"
+
+#: src/callbacks.c:909
+msgid "D code statistics (all active layers)\n"
+msgstr "D code statistics (all active layers)\n"
+
+#: src/callbacks.c:915
+msgid "Exposure on"
+msgstr "Exposure on"
+
+#: src/callbacks.c:919
+msgid "Exposure off"
+msgstr "Exposure off"
+
+#: src/callbacks.c:923
+msgid "Flash aperture"
+msgstr "Flash aperture"
+
+#: src/callbacks.c:925
+#, c-format
+msgid "Undefined D codes = %d\n"
+msgstr "Undefined D codes = %d\n"
+
+#: src/callbacks.c:928
+#, c-format
+msgid "D code Errors = %d\n"
+msgstr "D code Errors = %d\n"
+
+#: src/callbacks.c:932 src/callbacks.c:1310
+msgid "M code statistics (all active layers)\n"
+msgstr "M code statistics (all active layers)\n"
+
+#: src/callbacks.c:938
+msgid "Program start"
+msgstr "Program start"
+
+#: src/callbacks.c:942
+msgid "Program stop"
+msgstr "Program stop"
+
+#: src/callbacks.c:946
+msgid "Program end"
+msgstr "Program end"
+
+#: src/callbacks.c:948 src/callbacks.c:1370
+#, c-format
+msgid "Unknown M codes = %d\n"
+msgstr "Unknown M codes = %d\n"
+
+#: src/callbacks.c:952 src/callbacks.c:1375
+msgid "Misc code statistics (all active layers)\n"
+msgstr "Misc code statistics (all active layers)\n"
+
+#: src/callbacks.c:966 src/callbacks.c:1382
+#, c-format
+msgid "Unknown codes = %d\n"
+msgstr "Unknown codes = %d\n"
+
+#: src/callbacks.c:973
+msgid "No aperture definitions found in Gerber file(s)!\n"
+msgstr "No aperture definitions found in Gerber file(s)!\n"
+
+#: src/callbacks.c:976
+msgid "Apertures defined in Gerber file(s) (by layer)\n"
+msgstr "Apertures defined in Gerber file(s) (by layer)\n"
+
+#: src/callbacks.c:979
+msgid "Layer"
+msgstr "Layer"
+
+#: src/callbacks.c:980
+msgid "D code"
+msgstr "D code"
+
+#: src/callbacks.c:981
+msgid "Aperture"
+msgstr "Aperture"
+
+#: src/callbacks.c:982
+msgid "Param[0]"
+msgstr "Param[0]"
+
+#: src/callbacks.c:983
+msgid "Param[1]"
+msgstr "Param[1]"
+
+#: src/callbacks.c:984
+msgid "Param[2]"
+msgstr "Param[2]"
+
+#: src/callbacks.c:1005
+msgid "No apertures used in Gerber file(s)!\n"
+msgstr "No apertures used in Gerber file(s)!\n"
+
+#: src/callbacks.c:1011
+msgid "Apertures used in Gerber file(s) (all active layers)\n"
+msgstr "Apertures used in Gerber file(s) (all active layers)\n"
+
+#: src/callbacks.c:1013
+msgid "<aperture code> = <number of uses>\n"
+msgstr "<aperture code> = <number of uses>\n"
+
+#: src/callbacks.c:1027
+#, c-format
+msgid ""
+"\n"
+"Total number of aperture uses: %d\n"
+msgstr ""
+"\n"
+"Total number of aperture uses: %d\n"
+
+#: src/callbacks.c:1032
+msgid "Gerber codes report"
+msgstr "Gerber codes report"
+
+#: src/callbacks.c:1143 src/callbacks.c:1484
+msgid "General"
+msgstr "General"
+
+#: src/callbacks.c:1147 src/callbacks.c:1488
+msgid "G codes"
+msgstr "G codes"
+
+#: src/callbacks.c:1151
+msgid "D codes"
+msgstr "D codes"
+
+#: src/callbacks.c:1155 src/callbacks.c:1492
+msgid "M codes"
+msgstr "M codes"
+
+#: src/callbacks.c:1159 src/callbacks.c:1496
+msgid "Misc. codes"
+msgstr "Misc. codes"
+
+#: src/callbacks.c:1163
+msgid "Aperture definitions"
+msgstr "Aperture definitions"
+
+#: src/callbacks.c:1167
+msgid "Aperture usage"
+msgstr "Aperture usage"
+
+#: src/callbacks.c:1214
+msgid ""
+"\n"
+"\n"
+"Files processed:\n"
+msgstr ""
+"\n"
+"\n"
+"Files processed:\n"
+
+#: src/callbacks.c:1227
+msgid ""
+"\n"
+"\n"
+"No drill files active (visible)!\n"
+msgstr ""
+"\n"
+"\n"
+"No drill files active (visible)!\n"
+
+#: src/callbacks.c:1230
+msgid ""
+"\n"
+"\n"
+"No errors found in active drill file(s)!\n"
+msgstr ""
+"\n"
+"\n"
+"No errors found in active drill file(s)!\n"
+
+#: src/callbacks.c:1233
+msgid ""
+"\n"
+"\n"
+"Errors found in active drill file(s):\n"
+msgstr ""
+"\n"
+"\n"
+"Errors found in active drill file(s):\n"
+
+#: src/callbacks.c:1272
+msgid "Rout mode"
+msgstr "Rout mode"
+
+#: src/callbacks.c:1288
+msgid "Variable dwell"
+msgstr "Variable dwell"
+
+#: src/callbacks.c:1292
+msgid "Drill mode"
+msgstr "Drill mode"
+
+#: src/callbacks.c:1304
+msgid "Zero set"
+msgstr "Zero set"
+
+#: src/callbacks.c:1316
+msgid "End of program"
+msgstr "End of program"
+
+#: src/callbacks.c:1320
+msgid "End of pattern"
+msgstr "End of pattern"
+
+#: src/callbacks.c:1324
+msgid "Tool tip check"
+msgstr "Tool tip check"
+
+#: src/callbacks.c:1328 src/callbacks.c:1336
+msgid "Begin pattern"
+msgstr "Begin pattern"
+
+#: src/callbacks.c:1332
+msgid "End program rewind"
+msgstr "End program rewind"
+
+#: src/callbacks.c:1340
+msgid "Long message"
+msgstr "Long message"
+
+#: src/callbacks.c:1344
+msgid "Operator message"
+msgstr "Operator message"
+
+#: src/callbacks.c:1348
+msgid "Begin program header"
+msgstr "Begin program header"
+
+#: src/callbacks.c:1352
+msgid "Metric units"
+msgstr "Metric units"
+
+#: src/callbacks.c:1356
+msgid "English units"
+msgstr "English units"
+
+#: src/callbacks.c:1360
+msgid "End program header"
+msgstr "End program header"
+
+#: src/callbacks.c:1364 src/callbacks.c:1368
+msgid "Canned text"
+msgstr "Canned text"
+
+#: src/callbacks.c:1379
+#, c-format
+msgid "comments = %d\n"
+msgstr "comments = %d\n"
+
+#: src/callbacks.c:1388
+msgid "Repeat hole"
+msgstr "Repeat hole"
+
+#: src/callbacks.c:1396
+msgid "Drills used (all active layers)\n"
+msgstr "Drills used (all active layers)\n"
+
+#: src/callbacks.c:1398
+msgid "Drill no."
+msgstr "Drill no."
+
+#: src/callbacks.c:1398
+msgid "Dia."
+msgstr "Dia."
+
+#: src/callbacks.c:1398 src/drill.c:187
+msgid "Units"
+msgstr "Units"
+
+#: src/callbacks.c:1398
+msgid "Count"
+msgstr "Count"
+
+#: src/callbacks.c:1411
+#, c-format
+msgid "Total drill count %d\n"
+msgstr "Total drill count %d\n"
+
+#: src/callbacks.c:1420
+msgid "Drill file codes report"
+msgstr "Drill file codes report"
+
+#: src/callbacks.c:1500
+msgid "Drills used"
+msgstr "Drills used"
+
+#: src/callbacks.c:1547
+msgid "Do you want to close all open layers and quit the program?"
+msgstr "Do you want to close all open layers and quit the program?"
+
+#: src/callbacks.c:1548
+msgid "Quitting the program will cause any unsaved changes to be lost."
+msgstr "Quitting the program will cause any unsaved changes to be lost."
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: src/callbacks.c:1571
+msgid "translator-credits"
+msgstr "translator-credits"
+
+#: src/callbacks.c:1573
+#, c-format
+msgid ""
+"gerbv -- a Gerber (RS-274/X) viewer.\n"
+"\n"
+"This is gerbv version %s\n"
+"Compiled on %s at %s\n"
+"\n"
+"gerbv is part of the gEDA Project.\n"
+"\n"
+"For more information see:\n"
+"  gEDA homepage: http://geda-project.org/\n"
+"  gEDA Wiki: http://wiki.geda-project.org/"
+msgstr ""
+"gerbv -- a Gerber (RS-274/X) viewer.\n"
+"\n"
+"This is gerbv version %s\n"
+"Compiled on %s at %s\n"
+"\n"
+"gerbv is part of the gEDA Project.\n"
+"\n"
+"For more information see:\n"
+"  gEDA homepage: http://geda-project.org/\n"
+"  gEDA Wiki: http://wiki.geda-project.org/"
+
+#: src/callbacks.c:1584
+msgid ""
+"gerbv -- a Gerber (RS-274/X) viewer.\n"
+"\n"
+"Copyright (C) 2000-2007 Stefan Petersen\n"
+"\n"
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation, either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program.  If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+"gerbv -- a Gerber (RS-274/X) viewer.\n"
+"\n"
+"Copyright (C) 2000-2007 Stefan Petersen\n"
+"\n"
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation, either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program.  If not, see <http://www.gnu.org/licenses/>."
+
+#: src/callbacks.c:1603
+msgid "Gerbv"
+msgstr "Gerbv"
+
+#: src/callbacks.c:1632
+msgid "About Gerbv"
+msgstr "About Gerbv"
+
+#: src/callbacks.c:1659
+msgid "Known bugs in gerbv"
+msgstr "Known bugs in gerbv"
+
+#: src/callbacks.c:2007 src/callbacks.c:3022
+msgid ""
+"Click to select objects in the current layer. Middle click and drag to pan."
+msgstr ""
+"Click to select objects in the current layer. Middle click and drag to pan."
+
+#: src/callbacks.c:2015
+msgid "Click and drag to pan. Right click and drag to zoom."
+msgstr "Click and drag to pan. Right click and drag to zoom."
+
+#: src/callbacks.c:2023
+msgid "Click and drag to zoom in. Shift+click to zoom out."
+msgstr "Click and drag to zoom in. Shift+click to zoom out."
+
+#: src/callbacks.c:2031
+msgid "Click and drag to measure a distance."
+msgstr "Click and drag to measure a distance."
+
+#: src/callbacks.c:2207
+msgid "Select a color"
+msgstr "Select a color"
+
+#: src/callbacks.c:2321
+msgid "Unknown"
+msgstr "Unknown"
+
+#: src/callbacks.c:2325
+msgid "This file type does not currently have any editable features"
+msgstr "This file type does not currently have any editable features"
+
+#: src/callbacks.c:2326
+msgid ""
+"Format editing is currently only supported for Excellon drill file formats."
+msgstr ""
+"Format editing is currently only supported for Excellon drill file formats."
+
+#: src/callbacks.c:2336
+msgid "This layer has changed!"
+msgstr "This layer has changed!"
+
+#: src/callbacks.c:2337
+msgid ""
+"Editing the file type will reload the layer, destroying your changes.  Click "
+"OK to edit the file type and destroy your changes, or Cancel to leave."
+msgstr ""
+"Editing the file type will reload the layer, destroying your changes.  Click "
+"OK to edit the file type and destroy your changes, or Cancel to leave."
+
+#: src/callbacks.c:2352
+msgid "Edit file format"
+msgstr "Edit file format"
+
+#: src/callbacks.c:2360
+#, c-format
+msgid "%s():  Reloading layer\n"
+msgstr "%s():  Reloading layer\n"
+
+#: src/callbacks.c:2584 src/callbacks.c:2785
+msgid "No object is currently selected"
+msgstr "No object is currently selected"
+
+#: src/callbacks.c:2585
+msgid ""
+"Objects must be selected using the pointer tool before you can view the "
+"object properties."
+msgstr ""
+"Objects must be selected using the pointer tool before you can view the "
+"object properties."
+
+#: src/callbacks.c:2609
+msgid "<unnamed layer>"
+msgstr "<unnamed layer>"
+
+#: src/callbacks.c:2615
+msgid "<unlabeled net>"
+msgstr "<unlabeled net>"
+
+#: src/callbacks.c:2620
+msgid "Object type: Polygon\n"
+msgstr "Object type: Polygon\n"
+
+#: src/callbacks.c:2634
+msgid "Object type: Line\n"
+msgstr "Object type: Line\n"
+
+#: src/callbacks.c:2640
+msgid "Object type: Arc\n"
+msgstr "Object type: Arc\n"
+
+#: src/callbacks.c:2649
+msgid "Object type: Unknown\n"
+msgstr "Object type: Unknown\n"
+
+#: src/callbacks.c:2652
+msgid "    Exposure: On\n"
+msgstr "    Exposure: On\n"
+
+#: src/callbacks.c:2656
+#, c-format
+msgid "    Start location: (%g, %g)\n"
+msgstr "    Start location: (%g, %g)\n"
+
+#: src/callbacks.c:2658
+#, c-format
+msgid "    Stop location: (%g, %g)\n"
+msgstr "    Stop location: (%g, %g)\n"
+
+#: src/callbacks.c:2662
+#, c-format
+msgid "    Length: %g (sum: %g)\n"
+msgstr "    Length: %g (sum: %g)\n"
+
+#: src/callbacks.c:2665 src/callbacks.c:2677
+#, c-format
+msgid "    Layer name: %s\n"
+msgstr "    Layer name: %s\n"
+
+#: src/callbacks.c:2666 src/callbacks.c:2678
+#, c-format
+msgid "    Net label: %s\n"
+msgstr "    Net label: %s\n"
+
+#: src/callbacks.c:2667 src/callbacks.c:2679
+#, c-format
+msgid "    In file: %s\n"
+msgstr "    In file: %s\n"
+
+#: src/callbacks.c:2671
+msgid "Object type: Flashed aperture\n"
+msgstr "Object type: Flashed aperture\n"
+
+#: src/callbacks.c:2675
+#, c-format
+msgid "    Location: (%g, %g)\n"
+msgstr "    Location: (%g, %g)\n"
+
+#: src/callbacks.c:2703 src/callbacks.c:2719
+#, c-format
+msgid "Benchmark():  Starting redraw #%d\n"
+msgstr "Benchmark():  Starting redraw #%d\n"
+
+#: src/callbacks.c:2706 src/callbacks.c:2727
+#, c-format
+msgid "Elapsed time = %ld seconds\n"
+msgstr "Elapsed time = %ld seconds\n"
+
+#: src/callbacks.c:2708
+#, c-format
+msgid ""
+"FAST (=GDK) mode benchmark: %d redraws in %ld seconds (%g redraws/second)\n"
+msgstr ""
+"FAST (=GDK) mode benchmark: %d redraws in %ld seconds (%g redraws/second)\n"
+
+#: src/callbacks.c:2729
+#, c-format
+msgid ""
+"NORMAL (=Cairo) mode benchmark: %d redraws in %ld seconds (%g redraws/"
+"second)\n"
+msgstr ""
+"NORMAL (=Cairo) mode benchmark: %d redraws in %ld seconds (%g redraws/"
+"second)\n"
+
+#: src/callbacks.c:2743
+msgid "Full zoom benchmarks\n"
+msgstr "Full zoom benchmarks\n"
+
+#: src/callbacks.c:2747
+msgid "x5 zoom benchmarks\n"
+msgstr "x5 zoom benchmarks\n"
+
+#: src/callbacks.c:2786
+msgid ""
+"Objects must be selected using the pointer tool before they can be deleted."
+msgstr ""
+"Objects must be selected using the pointer tool before they can be deleted."
+
+#: src/callbacks.c:2798
+msgid "Do you want to permanently delete the selected objects?"
+msgstr "Do you want to permanently delete the selected objects?"
+
+#: src/callbacks.c:2799
+msgid ""
+"Gerbv currently has no undo function, so this action cannot be undone. This "
+"action will not change the saved file unless you save the file afterwards."
+msgstr ""
+"Gerbv currently has no undo function, so this action cannot be undone. This "
+"action will not change the saved file unless you save the file afterwards."
+
+#: src/callbacks.c:2991
+#, c-format
+msgid "(%8.2f, %8.2f)"
+msgstr "(%8.2f, %8.2f)"
+
+#: src/callbacks.c:2995
+#, c-format
+msgid "(%8.3f, %8.3f)"
+msgstr "(%8.3f, %8.3f)"
+
+#: src/callbacks.c:2999
+#, c-format
+msgid "(%4.5f, %4.5f)"
+msgstr "(%4.5f, %4.5f)"
+
+#: src/callbacks.c:3015
+msgid "No object selected. Objects can only be selected in the active layer."
+msgstr "No object selected. Objects can only be selected in the active layer."
+
+#: src/callbacks.c:3027
+msgid "1 object is currently selected"
+msgstr "1 object is currently selected"
+
+#: src/callbacks.c:3032
+#, c-format
+msgid "%d object are currently selected"
+msgid_plural "%d objects are currently selected"
+msgstr[0] "%d object are currently selected"
+msgstr[1] "%d objects are currently selected"
+
+#: src/callbacks.c:3264
+msgid "No objects are currently selected"
+msgstr "No objects are currently selected"
+
+#: src/callbacks.c:3338
+#, c-format
+msgid "Measured distance: %8.2f mils (%8.2f x, %8.2f y)"
+msgstr "Measured distance: %8.2f mils (%8.2f x, %8.2f y)"
+
+#: src/callbacks.c:3343
+#, c-format
+msgid "Measured distance: %8.3f mms (%8.3f x, %8.3f y)"
+msgstr "Measured distance: %8.3f mms (%8.3f x, %8.3f y)"
+
+#: src/callbacks.c:3348
+#, c-format
+msgid "Measured distance: %4.5f inches (%4.5f x, %4.5f y)"
+msgstr "Measured distance: %4.5f inches (%4.5f x, %4.5f y)"
+
+#: src/callbacks.c:3513
+#, c-format
+msgid "Fatal error : %s\n"
+msgstr "Fatal error : %s\n"
+
+#: src/callbacks.c:3577
+#, c-format
+msgid "    Aperture used: D%d\n"
+msgstr "    Aperture used: D%d\n"
+
+#: src/callbacks.c:3578
+#, c-format
+msgid "    Aperture type: %s\n"
+msgstr "    Aperture type: %s\n"
+
+#: src/callbacks.c:3582
+#, c-format
+msgid "    Diameter: %g\n"
+msgstr "    Diameter: %g\n"
+
+#: src/callbacks.c:3587
+#, c-format
+msgid "    Dimensions: %gx%g\n"
+msgstr "    Dimensions: %gx%g\n"
+
+#: src/csv.c:167 src/csv.c:288
+#, c-format
+msgid "%d: unexpected quote in element"
+msgstr "%d: unexpected quote in element"
+
+#: src/csv.c:198
+#, c-format
+msgid "%d: bad end quote in element"
+msgstr "%d: bad end quote in element"
+
+#: src/csv.c:319
+#, c-format
+msgid "%d: bad end quote in element "
+msgstr "%d: bad end quote in element "
+
+#: src/draw-gdk.c:572 src/draw.c:317
+msgid "Drawing simplified aperture macros:\n"
+msgstr "Drawing simplified aperture macros:\n"
+
+#: src/draw-gdk.c:578
+msgid "  Circle\n"
+msgstr "  Circle\n"
+
+#: src/draw-gdk.c:582
+msgid "  Outline\n"
+msgstr "  Outline\n"
+
+#: src/draw-gdk.c:586
+msgid "  Polygon\n"
+msgstr "  Polygon\n"
+
+#: src/draw-gdk.c:590
+msgid "  Moire\n"
+msgstr "  Moire\n"
+
+#: src/draw-gdk.c:594
+msgid "  Thermal\n"
+msgstr "  Thermal\n"
+
+#: src/draw-gdk.c:598
+msgid "  Line 20\n"
+msgstr "  Line 20\n"
+
+#: src/draw-gdk.c:602
+msgid "  Line 21\n"
+msgstr "  Line 21\n"
+
+#: src/draw-gdk.c:606
+msgid "  Line 22\n"
+msgstr "  Line 22\n"
+
+#: src/draw-gdk.c:609
+msgid "Unknown simplified aperture macro"
+msgstr "Unknown simplified aperture macro"
+
+#: src/draw-gdk.c:1116
+msgid "Linear != x1\n"
+msgstr "Linear != x1\n"
+
+#: src/draw-gdk.c:1209 src/draw.c:954
+msgid "Unknown aperture type\n"
+msgstr "Unknown aperture type\n"
+
+#: src/draw-gdk.c:1214 src/draw.c:962
+msgid "Unknown aperture state\n"
+msgstr "Unknown aperture state\n"
+
+#: src/drill.c:155 src/interface.c:1862
+msgid "None"
+msgstr "None"
+
+#: src/drill.c:157
+msgid "Leading"
+msgstr "Leading"
+
+#: src/drill.c:159
+msgid "Trailing"
+msgstr "Trailing"
+
+#: src/drill.c:165 src/drill.c:1125 src/drill.c:1207
+msgid "inch"
+msgstr "inch"
+
+#: src/drill.c:172 src/drill.c:1125 src/drill.c:1207 src/interface.c:1094
+msgid "mm"
+msgstr "mm"
+
+#: src/drill.c:179
+msgid "autodetect"
+msgstr "autodetect"
+
+#: src/drill.c:179
+msgid "Try to autodetect the file format"
+msgstr "Try to autodetect the file format"
+
+#: src/drill.c:183
+msgid "zero_supression"
+msgstr "zero_supression"
+
+#: src/drill.c:183
+msgid "Zero supression"
+msgstr "Zero supression"
+
+#: src/drill.c:187
+msgid "units"
+msgstr "units"
+
+#: src/drill.c:197
+msgid "digits"
+msgstr "digits"
+
+#: src/drill.c:197
+msgid ""
+"Number of digits.  For trailing zero supression, this is the number of "
+"digits before the decimal point.  Otherwise this is the number of digits "
+"after the decimal point."
+msgstr ""
+"Number of digits.  For trailing zero supression, this is the number of "
+"digits before the decimal point.  Otherwise this is the number of digits "
+"after the decimal point."
+
+#: src/drill.c:241
+msgid "malloc curr_net->next failed\n"
+msgstr "malloc curr_net->next failed\n"
+
+#: src/drill.c:324 src/gerber.c:770 src/pick-and-place.c:582
+msgid "malloc image failed\n"
+msgstr "malloc image failed\n"
+
+#: src/drill.c:352
+msgid "malloc stats failed\n"
+msgstr "malloc stats failed\n"
+
+#: src/drill.c:358
+msgid "malloc state failed\n"
+msgstr "malloc state failed\n"
+
+#: src/drill.c:362 src/drill_stats.c:314 src/pick-and-place.c:587
+msgid "malloc format failed\n"
+msgstr "malloc format failed\n"
+
+#: src/drill.c:417 src/drill.c:431 src/drill.c:727 src/drill.c:730
+#: src/drill.c:763
+#, c-format
+msgid "Undefined header line = '%s'\n"
+msgstr "Undefined header line = '%s'\n"
+
+#: src/drill.c:447
+msgid "Rout mode data is not supported\n"
+msgstr "Rout mode data is not supported\n"
+
+#: src/drill.c:462 src/gerber.c:1488
+msgid "Unexpected EOF found.\n"
+msgstr "Unexpected EOF found.\n"
+
+#: src/drill.c:510 src/drill.c:517
+msgid "Found junk after INCH command\n"
+msgstr "Found junk after INCH command\n"
+
+#: src/drill.c:561
+msgid ""
+"End of Excellon header reached but no leading/trailing zero handling "
+"specified.\n"
+msgstr ""
+"End of Excellon header reached but no leading/trailing zero handling "
+"specified.\n"
+
+#: src/drill.c:565
+msgid "Assuming leading zeros.\n"
+msgstr "Assuming leading zeros.\n"
+
+#: src/drill.c:575
+msgid "M71 code found but no METRIC specification in header.\n"
+msgstr "M71 code found but no METRIC specification in header.\n"
+
+#: src/drill.c:579
+msgid "Assuming all tool sizes are MM.\n"
+msgstr "Assuming all tool sizes are MM.\n"
+
+#: src/drill.c:620
+#, c-format
+msgid "Message embedded in drill file: '%s'\n"
+msgstr "Message embedded in drill file: '%s'\n"
+
+#: src/drill.c:644
+msgid "Undefined M code found.\n"
+msgstr "Undefined M code found.\n"
+
+#: src/drill.c:653
+msgid "R codes are not allowed in the header.\n"
+msgstr "R codes are not allowed in the header.\n"
+
+#: src/drill.c:715
+msgid "Drill file sets spindle speed -- ignoring.\n"
+msgstr "Drill file sets spindle speed -- ignoring.\n"
+
+#: src/drill.c:759
+msgid "Undefined codes found in header.\n"
+msgstr "Undefined codes found in header.\n"
+
+#: src/drill.c:772
+#, c-format
+msgid "Undefined character '%c' [0x%02x] found inside data, ignoring\n"
+msgstr "Undefined character '%c' [0x%02x] found inside data, ignoring\n"
+
+#: src/drill.c:784
+msgid "No EOF found in drill file.\n"
+msgstr "No EOF found in drill file.\n"
+
+#: src/drill.c:870
+msgid "malloc buf failed while checking for drill file.\n"
+msgstr "malloc buf failed while checking for drill file.\n"
+
+#: src/drill.c:989
+#, c-format
+msgid "Tool change stop switch found: %s\n"
+msgstr "Tool change stop switch found: %s\n"
+
+#: src/drill.c:1007
+msgid "Orcad bug: Junk text found in place of tool definition.\n"
+msgstr "Orcad bug: Junk text found in place of tool definition.\n"
+
+#: src/drill.c:1010
+#, c-format
+msgid "Junk text = %s\n"
+msgstr "Junk text = %s\n"
+
+#: src/drill.c:1020
+msgid "Ignorning junk text.\n"
+msgstr "Ignorning junk text.\n"
+
+#: src/drill.c:1034
+#, c-format
+msgid "Drill number out of bounds: %d.\n"
+msgstr "Drill number out of bounds: %d.\n"
+
+#: src/drill.c:1065
+#, c-format
+msgid "Read a drill of diameter %g inches.\n"
+msgstr "Read a drill of diameter %g inches.\n"
+
+#: src/drill.c:1071
+msgid "Assuming units are mils.\n"
+msgstr "Assuming units are mils.\n"
+
+#: src/drill.c:1081
+#, c-format
+msgid "Unreasonable drill size found for drill %d: %g\n"
+msgstr "Unreasonable drill size found for drill %d: %g\n"
+
+#: src/drill.c:1097
+#, c-format
+msgid "Found redefinition of drill %d.\n"
+msgstr "Found redefinition of drill %d.\n"
+
+#: src/drill.c:1108 src/drill.c:1163
+msgid "malloc tool failed\n"
+msgstr "malloc tool failed\n"
+
+#: src/drill.c:1150
+msgid "Unexpected EOF encountered header of drill file.\n"
+msgstr "Unexpected EOF encountered header of drill file.\n"
+
+#: src/drill.c:1182
+#, c-format
+msgid "Tool %02d used without being defined\n"
+msgstr "Tool %02d used without being defined\n"
+
+#: src/drill.c:1188
+#, c-format
+msgid "Setting a default size of %g\"\n"
+msgstr "Setting a default size of %g\"\n"
+
+#: src/drill.c:1237
+msgid "Unexpected EOF found while parsing M code.\n"
+msgstr "Unexpected EOF found while parsing M code.\n"
+
+#: src/drill.c:1391
+msgid "Found junk after METRIC command\n"
+msgstr "Found junk after METRIC command\n"
+
+#: src/drill.c:1431
+msgid "Unexpected EOF found while parsing G code.\n"
+msgstr "Unexpected EOF found while parsing G code.\n"
+
+#: src/drill.c:1605
+#, c-format
+msgid ""
+"%s():  omit_zeros == GERBV_OMIT_ZEROS_TRAILING but fmt = %d.\n"
+"This should never have happened\n"
+msgstr ""
+"%s():  omit_zeros == GERBV_OMIT_ZEROS_TRAILING but fmt = %d.\n"
+"This should never have happened\n"
+
+#: src/drill.c:1620
+#, c-format
+msgid "%s():  wantdigits = %d which exceeds the maximum allowed size\n"
+msgstr "%s():  wantdigits = %d which exceeds the maximum allowed size\n"
+
+#: src/drill.c:1675
+#, c-format
+msgid "%s(): Unhandled fmt ` %d\n"
+msgstr "%s(): Unhandled fmt ` %d\n"
+
+#: src/drill_stats.c:68
+msgid "malloc drill_list failed\n"
+msgstr "malloc drill_list failed\n"
+
+#: src/drill_stats.c:74 src/drill_stats.c:469 src/gerb_stats.c:68
+#: src/gerb_stats.c:290
+msgid "malloc error_list failed\n"
+msgstr "malloc error_list failed\n"
+
+#: src/drill_stats.c:199
+#, c-format
+msgid "Broken tool detect %s (layer %d)"
+msgstr "Broken tool detect %s (layer %d)"
+
+#: src/dynload.c:49
+#, c-format
+msgid "scheme load-extension: %s: %s"
+msgstr "scheme load-extension: %s: %s"
+
+#: src/dynload.c:79
+#, c-format
+msgid "Error loading scheme extension \"%s\": %s\n"
+msgstr "Error loading scheme extension \"%s\": %s\n"
+
+#: src/dynload.c:90
+#, c-format
+msgid "Error initializing scheme module \"%s\": %s\n"
+msgstr "Error initializing scheme module \"%s\": %s\n"
+
+#: src/export-drill.c:56 src/export-rs274x.c:217
+#, c-format
+msgid "Can't open file for writing: %s\n"
+msgstr "Can't open file for writing: %s\n"
+
+#: src/gerb_file.c:182
+msgid "Failed to read integer"
+msgstr "Failed to read integer"
+
+#: src/gerb_file.c:208
+msgid "Failed to read double"
+msgstr "Failed to read double"
+
+#: src/gerb_image.c:100 src/gerb_image.c:272 src/gerb_image.c:325
+#, c-format
+msgid "unknown"
+msgstr "unknown"
+
+#: src/gerb_image.c:248
+#, c-format
+msgid "linearX1"
+msgstr "linearX1"
+
+#: src/gerb_image.c:251
+#, c-format
+msgid "linearX10"
+msgstr "linearX10"
+
+#: src/gerb_image.c:254
+#, c-format
+msgid "linearX01"
+msgstr "linearX01"
+
+#: src/gerb_image.c:257
+#, c-format
+msgid "linearX001"
+msgstr "linearX001"
+
+#: src/gerb_image.c:260
+#, c-format
+msgid "CW circular"
+msgstr "CW circular"
+
+#: src/gerb_image.c:263
+#, c-format
+msgid "CCW circular"
+msgstr "CCW circular"
+
+#: src/gerb_image.c:266
+#, c-format
+msgid "polygon area start"
+msgstr "polygon area start"
+
+#: src/gerb_image.c:269
+#, c-format
+msgid "polygon area end"
+msgstr "polygon area end"
+
+#: src/gerb_image.c:281
+#, c-format
+msgid "..state off"
+msgstr "..state off"
+
+#: src/gerb_image.c:284
+#, c-format
+msgid "..state on"
+msgstr "..state on"
+
+#: src/gerb_image.c:287
+#, c-format
+msgid "..state flash"
+msgstr "..state flash"
+
+#: src/gerb_image.c:290
+#, c-format
+msgid "..state unknown"
+msgstr "..state unknown"
+
+#: src/gerb_image.c:303
+#, c-format
+msgid "Apertures:\n"
+msgstr "Apertures:\n"
+
+#: src/gerb_image.c:307
+#, c-format
+msgid " Aperture no:%d is an "
+msgstr " Aperture no:%d is an "
+
+#: src/gerb_image.c:310
+#, c-format
+msgid "circle"
+msgstr "circle"
+
+#: src/gerb_image.c:313
+#, c-format
+msgid "rectangle"
+msgstr "rectangle"
+
+#: src/gerb_image.c:316
+#, c-format
+msgid "oval"
+msgstr "oval"
+
+#: src/gerb_image.c:319
+#, c-format
+msgid "polygon"
+msgstr "polygon"
+
+#: src/gerb_image.c:322
+#, c-format
+msgid "macro"
+msgstr "macro"
+
+#: src/gerb_image.c:337
+#, c-format
+msgid "(%f,%f)->(%f,%f) with %d ("
+msgstr "(%f,%f)->(%f,%f) with %d ("
+
+#: src/gerb_stats.c:74 src/gerb_stats.c:376
+msgid "malloc aperture_list failed\n"
+msgstr "malloc aperture_list failed\n"
+
+#: src/gerb_stats.c:80
+msgid "malloc D_code_list failed\n"
+msgstr "malloc D_code_list failed\n"
+
+#: src/gerb_stats.c:434
+msgid "malloc D_list failed\n"
+msgstr "malloc D_list failed\n"
+
+#: src/gerb_stats.c:476
+msgid "Undefined aperture number called out in D code.\n"
+msgstr "Undefined aperture number called out in D code.\n"
+
+#: src/gerber.c:179
+msgid "Unknown M code found.\n"
+msgstr "Unknown M code found.\n"
+
+#: src/gerber.c:489
+#, c-format
+msgid ""
+"Found undefined D code D%d in file\n"
+"%s\n"
+msgstr ""
+"Found undefined D code D%d in file\n"
+"%s\n"
+
+#: src/gerber.c:723
+#, c-format
+msgid "Found unknown character (whitespace?) [%d]%c\n"
+msgstr "Found unknown character (whitespace?) [%d]%c\n"
+
+#: src/gerber.c:775
+msgid "malloc gerbv_stats failed\n"
+msgstr "malloc gerbv_stats failed\n"
+
+#: src/gerber.c:792
+#, c-format
+msgid "File %s is missing Gerber EOF code.\n"
+msgstr "File %s is missing Gerber EOF code.\n"
+
+#: src/gerber.c:833
+msgid "malloc buf failed while checking for rs274x.\n"
+msgstr "malloc buf failed while checking for rs274x.\n"
+
+#: src/gerber.c:927
+msgid "malloc buf failed while checking for rs274d.\n"
+msgstr "malloc buf failed while checking for rs274d.\n"
+
+#: src/gerber.c:1060
+#, c-format
+msgid ""
+"Found aperture D%d out of bounds while parsing G code in file\n"
+"%s\n"
+msgstr ""
+"Found aperture D%d out of bounds while parsing G code in file\n"
+"%s\n"
+
+#: src/gerber.c:1069
+#, c-format
+msgid ""
+"Found unexpected code after G54 in file\n"
+"%s\n"
+msgstr ""
+"Found unexpected code after G54 in file\n"
+"%s\n"
+
+#: src/gerber.c:1109
+#, c-format
+msgid ""
+"Encountered unknown G code G%d in file\n"
+"%s\n"
+msgstr ""
+"Encountered unknown G code G%d in file\n"
+"%s\n"
+
+#: src/gerber.c:1115
+#, c-format
+msgid "Ignorning unknown G code G%d\n"
+msgstr "Ignorning unknown G code G%d\n"
+
+#: src/gerber.c:1145
+#, c-format
+msgid ""
+"Found invalid D00 code in file\n"
+"%s\n"
+msgstr ""
+"Found invalid D00 code in file\n"
+"%s\n"
+
+#: src/gerber.c:1173
+#, c-format
+msgid ""
+"Found out of bounds aperture D%d in file\n"
+"%s\n"
+msgstr ""
+"Found out of bounds aperture D%d in file\n"
+"%s\n"
+
+#: src/gerber.c:1211
+#, c-format
+msgid ""
+"Encountered unknown M code M%d in file\n"
+"%s\n"
+msgstr ""
+"Encountered unknown M code M%d in file\n"
+"%s\n"
+
+#: src/gerber.c:1218
+#, c-format
+msgid "Ignorning unknown M code M%d\n"
+msgstr "Ignorning unknown M code M%d\n"
+
+#: src/gerber.c:1252 src/gerber.c:1271 src/gerber.c:1290 src/gerber.c:1614
+#, c-format
+msgid ""
+"Unexpected EOF found in file\n"
+"%s\n"
+msgstr ""
+"Unexpected EOF found in file\n"
+"%s\n"
+
+#: src/gerber.c:1320
+#, c-format
+msgid ""
+"EagleCad bug detected: Undefined handling of zeros in format code in file\n"
+"%s\n"
+msgstr ""
+"EagleCad bug detected: Undefined handling of zeros in format code in file\n"
+"%s\n"
+
+#: src/gerber.c:1327
+msgid "Defaulting to omitting leading zeros.\n"
+msgstr "Defaulting to omitting leading zeros.\n"
+
+#: src/gerber.c:1345
+#, c-format
+msgid ""
+"Invalid coordinate type defined in format code in file\n"
+"%s\n"
+msgstr ""
+"Invalid coordinate type defined in format code in file\n"
+"%s\n"
+
+#: src/gerber.c:1352
+msgid "Defaulting to absolute coordinates.\n"
+msgstr "Defaulting to absolute coordinates.\n"
+
+#: src/gerber.c:1382 src/gerber.c:1393 src/gerber.c:1406 src/gerber.c:1417
+#, c-format
+msgid ""
+"Illegal format size %c in file\n"
+"%s\n"
+msgstr ""
+"Illegal format size %c in file\n"
+"%s\n"
+
+#: src/gerber.c:1428
+#, c-format
+msgid ""
+"Illegal format statement [%c] in file\n"
+"%s\n"
+msgstr ""
+"Illegal format statement [%c] in file\n"
+"%s\n"
+
+#: src/gerber.c:1435
+msgid "Ignoring invalid format statement.\n"
+msgstr "Ignoring invalid format statement.\n"
+
+#: src/gerber.c:1471
+#, c-format
+msgid "Wrong character in mirror:%c\n"
+msgstr "Wrong character in mirror:%c\n"
+
+#: src/gerber.c:1500
+#, c-format
+msgid "Illegal unit: %c%c\n"
+msgstr "Illegal unit: %c%c\n"
+
+#: src/gerber.c:1520
+#, c-format
+msgid "Wrong character in offset: %c\n"
+msgstr "Wrong character in offset: %c\n"
+
+#: src/gerber.c:1549
+#, c-format
+msgid ""
+"In file %s,\n"
+"included file %s cannot be found\n"
+msgstr ""
+"In file %s,\n"
+"included file %s cannot be found\n"
+
+#: src/gerber.c:1559
+msgid ""
+"Parser encountered more than 10 levels of include file recursion which is "
+"not allowed by the RS-274X spec\n"
+msgstr ""
+"Parser encountered more than 10 levels of include file recursion which is "
+"not allowed by the RS-274X spec\n"
+
+#: src/gerber.c:1582
+#, c-format
+msgid ""
+"In file %s,\n"
+"wrong character in image offset %c\n"
+msgstr ""
+"In file %s,\n"
+"wrong character in image offset %c\n"
+
+#: src/gerber.c:1638
+#, c-format
+msgid ""
+"In file %s,\n"
+"unknown input code (IC): %c%c\n"
+msgstr ""
+"In file %s,\n"
+"unknown input code (IC): %c%c\n"
+
+#: src/gerber.c:1680
+#, c-format
+msgid ""
+"In file %s,\n"
+"wrong character in image justify:%c\n"
+msgstr ""
+"In file %s,\n"
+"wrong character in image justify:%c\n"
+
+#: src/gerber.c:1699
+#, c-format
+msgid ""
+"In file %s,\n"
+"unexpected EOF while reading image polarity (IP)\n"
+msgstr ""
+"In file %s,\n"
+"unexpected EOF while reading image polarity (IP)\n"
+
+#: src/gerber.c:1715
+#, c-format
+msgid "Unknown polarity: %c%c%c\n"
+msgstr "Unknown polarity: %c%c%c\n"
+
+#: src/gerber.c:1734
+#, c-format
+msgid "Image rotation must be 0, 90, 180 or 270 (is actually %d)\n"
+msgstr "Image rotation must be 0, 90, 180 or 270 (is actually %d)\n"
+
+#: src/gerber.c:1765 src/gerber.c:1770
+#, c-format
+msgid ""
+"In file %s,\n"
+"aperture number out of bounds: %d\n"
+msgstr ""
+"In file %s,\n"
+"aperture number out of bounds: %d\n"
+
+#: src/gerber.c:1790
+#, c-format
+msgid ""
+"In file %s,\n"
+"failed to parse aperture macro\n"
+msgstr ""
+"In file %s,\n"
+"failed to parse aperture macro\n"
+
+#: src/gerber.c:1815
+#, c-format
+msgid ""
+"In file %s,\n"
+"unknown Layer Polarity: %c\n"
+msgstr ""
+"In file %s,\n"
+"unknown Layer Polarity: %c\n"
+
+#: src/gerber.c:1838
+#, c-format
+msgid ""
+"In file %s,\n"
+"knockout must supply a polarity (C, D, or *)\n"
+msgstr ""
+"In file %s,\n"
+"knockout must supply a polarity (C, D, or *)\n"
+
+#: src/gerber.c:1884
+#, c-format
+msgid ""
+"In file %s,\n"
+"unknown variable in knockout"
+msgstr ""
+"In file %s,\n"
+"unknown variable in knockout"
+
+#: src/gerber.c:1921
+#, c-format
+msgid ""
+"In file %s,\n"
+"step-and-repeat parameter error\n"
+msgstr ""
+"In file %s,\n"
+"step-and-repeat parameter error\n"
+
+#: src/gerber.c:1950
+#, c-format
+msgid ""
+"In file %s,\n"
+"error in layer rotation command\n"
+msgstr ""
+"In file %s,\n"
+"error in layer rotation command\n"
+
+#: src/gerber.c:1960
+#, c-format
+msgid ""
+"In file %s,\n"
+"unknown RS-274X extension found %%%c%c%%\n"
+msgstr ""
+"In file %s,\n"
+"unknown RS-274X extension found %%%c%c%%\n"
+
+#: src/gerber.c:2048
+msgid "aperture NULL in simplify aperture macro\n"
+msgstr "aperture NULL in simplify aperture macro\n"
+
+#: src/gerber.c:2051
+msgid "aperture->amacro NULL in simplify aperture macro\n"
+msgstr "aperture->amacro NULL in simplify aperture macro\n"
+
+#: src/gerber.c:2056
+msgid "malloc stack failed\n"
+msgstr "malloc stack failed\n"
+
+#: src/gerber.c:2075 src/gerber.c:2080 src/gerber.c:2082 src/gerber.c:2087
+#: src/gerber.c:2089 src/gerber.c:2094 src/gerber.c:2096 src/gerber.c:2101
+#: src/gerber.c:2103
+msgid "Tried to pop an empty stack"
+msgstr "Tried to pop an empty stack"
+
+#: src/gerber.c:2168
+#, c-format
+msgid ""
+"Number of parameters to aperture macro (%d) are more than gerbv is able to "
+"store (%d)\n"
+msgstr ""
+"Number of parameters to aperture macro (%d) are more than gerbv is able to "
+"store (%d)\n"
+
+#: src/gerber.c:2307
+#, c-format
+msgid ""
+"Found AD code with no following 'D' in file\n"
+"%s\n"
+msgstr ""
+"Found AD code with no following 'D' in file\n"
+"%s\n"
+
+#: src/gerber.c:2329
+#, c-format
+msgid ""
+"Invalid aperture definition in file\n"
+"%s\n"
+msgstr ""
+"Invalid aperture definition in file\n"
+"%s\n"
+
+#: src/gerber.c:2377
+#, c-format
+msgid ""
+"In file %s,\n"
+"maximum number of allowed parameters exceeded in aperture %d\n"
+msgstr ""
+"In file %s,\n"
+"maximum number of allowed parameters exceeded in aperture %d\n"
+
+#: src/gerber.c:2398
+#, c-format
+msgid "Failed to read all parameters exceeded in aperture %d\n"
+msgstr "Failed to read all parameters exceeded in aperture %d\n"
+
+#: src/gerber.c:2473
+msgid "Unknow quadrant value while converting to cw\n"
+msgstr "Unknow quadrant value while converting to cw\n"
+
+#: src/gerber.c:2498 src/gerber.c:2544
+#, c-format
+msgid "Strange quadrant: %d\n"
+msgstr "Strange quadrant: %d\n"
+
+#: src/gerber.c:2548
+#, c-format
+msgid "Negative width [%f] in quadrant %d [%f][%f]\n"
+msgstr "Negative width [%f] in quadrant %d [%f][%f]\n"
+
+#: src/gerber.c:2552
+#, c-format
+msgid "Negative height [%f] in quadrant %d [%f][%f]\n"
+msgstr "Negative height [%f] in quadrant %d [%f][%f]\n"
+
+#: src/gerbv.c:185 src/gerbv.c:204
+#, c-format
+msgid "could not read %s[%d]"
+msgstr "could not read %s[%d]"
+
+#: src/gerbv.c:328
+msgid "Missing netlist - aborting file read\n"
+msgstr "Missing netlist - aborting file read\n"
+
+#: src/gerbv.c:336
+msgid "Missing format in file...trying to load anyways\n"
+msgstr "Missing format in file...trying to load anyways\n"
+
+#: src/gerbv.c:338
+msgid "Missing apertures/drill sizes...trying to load anyways\n"
+msgstr "Missing apertures/drill sizes...trying to load anyways\n"
+
+#: src/gerbv.c:344
+msgid "Missing info...trying to load anyways\n"
+msgstr "Missing info...trying to load anyways\n"
+
+#: src/gerbv.c:428 src/gerbv.c:522
+#, c-format
+msgid "Trying to open %s:%s\n"
+msgstr "Trying to open %s:%s\n"
+
+#: src/gerbv.c:464
+msgid "Most likely found a RS-274D file...trying to open anyways"
+msgstr "Most likely found a RS-274D file...trying to open anyways"
+
+#: src/gerbv.c:475
+#, c-format
+msgid "%s: Unknown file type.\n"
+msgstr "%s: Unknown file type.\n"
+
+#: src/gerbv.c:489
+msgid " (top)"
+msgstr " (top)"
+
+#: src/gerbv.c:506
+msgid " (bottom)"
+msgstr " (bottom)"
+
+#: src/gerbv.c:880 src/project.c:373 src/project.c:422 src/project.c:432
+#, c-format
+msgid "%s():  malloc failed\n"
+msgstr "%s():  malloc failed\n"
+
+#: src/interface.c:57
+msgid "Gerbv -- gEDA's Gerber Viewer"
+msgstr "Gerbv -- gEDA's Gerber Viewer"
+
+#: src/interface.c:73
+#, c-format
+msgid "%s version %s: %s"
+msgstr "%s version %s: %s"
+
+#: src/interface.c:310
+msgid "_File"
+msgstr "_File"
+
+#: src/interface.c:321 src/interface.c:862
+msgid "Close all layers and start a new project"
+msgstr "Close all layers and start a new project"
+
+#: src/interface.c:324
+msgid "_Open project..."
+msgstr "_Open project..."
+
+#: src/interface.c:326
+msgid "Open an existing Gerbv project"
+msgstr "Open an existing Gerbv project"
+
+#: src/interface.c:330
+msgid "Save project"
+msgstr "Save project"
+
+#: src/interface.c:332 src/interface.c:874
+msgid "Save the current project"
+msgstr "Save the current project"
+
+#: src/interface.c:339
+msgid "Save the current project to a new file"
+msgstr "Save the current project to a new file"
+
+#: src/interface.c:347
+msgid "Reload all layers"
+msgstr "Reload all layers"
+
+#: src/interface.c:355
+msgid "Open _layer(s)..."
+msgstr "Open _layer(s)..."
+
+#: src/interface.c:358 src/interface.c:995
+msgid "Open Gerber, drill, or pick and place file(s)"
+msgstr "Open Gerber, drill, or pick and place file(s)"
+
+#: src/interface.c:360
+msgid "_Save active layer"
+msgstr "_Save active layer"
+
+#: src/interface.c:362
+msgid "Save the active layer"
+msgstr "Save the active layer"
+
+#: src/interface.c:366
+msgid "Save active layer _as..."
+msgstr "Save active layer _as..."
+
+#: src/interface.c:368
+msgid "Save the active layer to a new file"
+msgstr "Save the active layer to a new file"
+
+#: src/interface.c:377
+msgid "_Export"
+msgstr "_Export"
+
+#: src/interface.c:379
+msgid "Export all visible layers to a new format"
+msgstr "Export all visible layers to a new format"
+
+#: src/interface.c:387
+msgid "P_NG..."
+msgstr "P_NG..."
+
+#: src/interface.c:389
+msgid "Export project to a PNG file..."
+msgstr "Export project to a PNG file..."
+
+#: src/interface.c:391
+msgid "P_DF..."
+msgstr "P_DF..."
+
+#: src/interface.c:393
+msgid "Export project to a PDF file..."
+msgstr "Export project to a PDF file..."
+
+#: src/interface.c:395
+msgid "_SVG..."
+msgstr "_SVG..."
+
+#: src/interface.c:397
+msgid "Export project to a SVG file"
+msgstr "Export project to a SVG file"
+
+#: src/interface.c:399
+msgid "_PostScript..."
+msgstr "_PostScript..."
+
+#: src/interface.c:401
+msgid "Export project to a PostScript file"
+msgstr "Export project to a PostScript file"
+
+#: src/interface.c:403
+msgid "RS-274X (_Gerber)..."
+msgstr "RS-274X (_Gerber)..."
+
+#: src/interface.c:405
+msgid "Export layer to a RS-274X (Gerber) file"
+msgstr "Export layer to a RS-274X (Gerber) file"
+
+#: src/interface.c:407
+msgid "_Excellon drill..."
+msgstr "_Excellon drill..."
+
+#: src/interface.c:409
+msgid "Export layer to an Excellon drill file"
+msgstr "Export layer to an Excellon drill file"
+
+#: src/interface.c:411
+msgid "RS-274X Merge (Gerber)..."
+msgstr "RS-274X Merge (Gerber)..."
+
+#: src/interface.c:413
+msgid "Export (merge visible gerber layers) to a RS-274X (Gerber) file"
+msgstr "Export (merge visible gerber layers) to a RS-274X (Gerber) file"
+
+#: src/interface.c:415
+msgid "Excellon drill Merge..."
+msgstr "Excellon drill Merge..."
+
+#: src/interface.c:417
+msgid "Export (merge visible drill layers) to an Excellon drill file"
+msgstr "Export (merge visible drill layers) to an Excellon drill file"
+
+#: src/interface.c:426
+msgid "_Print..."
+msgstr "_Print..."
+
+#: src/interface.c:434 src/interface.c:881
+msgid "Print the visible layers"
+msgstr "Print the visible layers"
+
+#: src/interface.c:443
+msgid "Quit Gerbv"
+msgstr "Quit Gerbv"
+
+#: src/interface.c:447
+msgid "_Edit"
+msgstr "_Edit"
+
+#: src/interface.c:456
+msgid "Display _properties of selected object(s)"
+msgstr "Display _properties of selected object(s)"
+
+#: src/interface.c:458
+msgid "Examine the properties of the selected object"
+msgstr "Examine the properties of the selected object"
+
+#: src/interface.c:463
+msgid "_Delete selected object(s)"
+msgstr "_Delete selected object(s)"
+
+#: src/interface.c:465
+msgid "Delete selected objects"
+msgstr "Delete selected objects"
+
+#: src/interface.c:494
+msgid "_View"
+msgstr "_View"
+
+#: src/interface.c:502
+msgid "Fullscr_een"
+msgstr "Fullscr_een"
+
+#: src/interface.c:504
+msgid "Toggle between fullscreen and normal view"
+msgstr "Toggle between fullscreen and normal view"
+
+#: src/interface.c:508
+msgid "Show _Toolbar"
+msgstr "Show _Toolbar"
+
+#: src/interface.c:510
+msgid "Toggle visibility of the toolbar"
+msgstr "Toggle visibility of the toolbar"
+
+#: src/interface.c:514
+msgid "Show _Sidepane"
+msgstr "Show _Sidepane"
+
+#: src/interface.c:516
+msgid "Toggle visibility of the sidepane"
+msgstr "Toggle visibility of the sidepane"
+
+#: src/interface.c:524
+msgid "Toggle layer _visibility"
+msgstr "Toggle layer _visibility"
+
+#: src/interface.c:532
+msgid "Toggle visibility of layer 1"
+msgstr "Toggle visibility of layer 1"
+
+#: src/interface.c:536
+msgid "Toggle visibility of layer 2"
+msgstr "Toggle visibility of layer 2"
+
+#: src/interface.c:540
+msgid "Toggle visibility of layer 3"
+msgstr "Toggle visibility of layer 3"
+
+#: src/interface.c:544
+msgid "Toggle visibility of layer 4"
+msgstr "Toggle visibility of layer 4"
+
+#: src/interface.c:548
+msgid "Toggle visibility of layer 5"
+msgstr "Toggle visibility of layer 5"
+
+#: src/interface.c:552
+msgid "Toggle visibility of layer 6"
+msgstr "Toggle visibility of layer 6"
+
+#: src/interface.c:556
+msgid "Toggle visibility of layer 7"
+msgstr "Toggle visibility of layer 7"
+
+#: src/interface.c:560
+msgid "Toggle visibility of layer 8"
+msgstr "Toggle visibility of layer 8"
+
+#: src/interface.c:564
+msgid "Toggle visibility of layer 9"
+msgstr "Toggle visibility of layer 9"
+
+#: src/interface.c:568
+msgid "Toggle visibility of layer 10"
+msgstr "Toggle visibility of layer 10"
+
+#: src/interface.c:578 src/interface.c:888
+msgid "Zoom in"
+msgstr "Zoom in"
+
+#: src/interface.c:583 src/interface.c:892
+msgid "Zoom out"
+msgstr "Zoom out"
+
+#: src/interface.c:587 src/interface.c:896
+msgid "Zoom to fit all visible layers in the window"
+msgstr "Zoom to fit all visible layers in the window"
+
+#: src/interface.c:595
+msgid "Change background color"
+msgstr "Change background color"
+
+#: src/interface.c:596
+msgid "Change the background color"
+msgstr "Change the background color"
+
+#: src/interface.c:602
+msgid "_Rendering"
+msgstr "_Rendering"
+
+#: src/interface.c:612
+msgid "_Fast"
+msgstr "_Fast"
+
+#: src/interface.c:616
+msgid "Fast (_XOR)"
+msgstr "Fast (_XOR)"
+
+#: src/interface.c:620
+msgid "_Normal"
+msgstr "_Normal"
+
+#: src/interface.c:624
+msgid "High _Quality"
+msgstr "High _Quality"
+
+#: src/interface.c:630
+msgid "malloc for rendering type synchronization failed.\n"
+msgstr "malloc for rendering type synchronization failed.\n"
+
+#: src/interface.c:641
+msgid "U_nits"
+msgstr "U_nits"
+
+#: src/interface.c:651
+msgid "mi_l"
+msgstr "mi_l"
+
+#: src/interface.c:655
+msgid "_mm"
+msgstr "_mm"
+
+#: src/interface.c:659
+msgid "_in"
+msgstr "_in"
+
+#: src/interface.c:665
+msgid "malloc for display unit synchronization failed.\n"
+msgstr "malloc for display unit synchronization failed.\n"
+
+#: src/interface.c:673
+msgid "_Layer"
+msgstr "_Layer"
+
+#: src/interface.c:681
+msgid "Toggle _visibility"
+msgstr "Toggle _visibility"
+
+#: src/interface.c:682
+msgid "Toggles the visibility of the layer currently selected in the sidepane"
+msgstr "Toggles the visibility of the layer currently selected in the sidepane"
+
+#: src/interface.c:685
+msgid "All o_n"
+msgstr "All o_n"
+
+#: src/interface.c:686
+msgid "Turn on visibility of all layers"
+msgstr "Turn on visibility of all layers"
+
+#: src/interface.c:691
+msgid "All _off"
+msgstr "All _off"
+
+#: src/interface.c:692
+msgid "Turn off visibility of all layers"
+msgstr "Turn off visibility of all layers"
+
+#: src/interface.c:697
+msgid "_Invert color"
+msgstr "_Invert color"
+
+#: src/interface.c:698
+msgid ""
+"Invert the display polarity of the layer currently selected in the sidepane"
+msgstr ""
+"Invert the display polarity of the layer currently selected in the sidepane"
+
+#: src/interface.c:701
+msgid "_Change color"
+msgstr "_Change color"
+
+#: src/interface.c:703
+msgid ""
+"Change the display color of the layer currently selected in the sidepane"
+msgstr ""
+"Change the display color of the layer currently selected in the sidepane"
+
+#: src/interface.c:711
+msgid "_Reload layer"
+msgstr "_Reload layer"
+
+#: src/interface.c:712
+msgid "Reload the layer from disk"
+msgstr "Reload the layer from disk"
+
+#: src/interface.c:717
+msgid "_Modify orientation"
+msgstr "_Modify orientation"
+
+#: src/interface.c:719
+msgid ""
+"Translate, scale, rotate, or mirror the layer currently selected in the "
+"sidepane"
+msgstr ""
+"Translate, scale, rotate, or mirror the layer currently selected in the "
+"sidepane"
+
+#: src/interface.c:721
+msgid "Edit file _format"
+msgstr "Edit file _format"
+
+#: src/interface.c:722
+msgid ""
+"View and edit the numerical format used to parse this layer currently "
+"selected in the sidepane"
+msgstr ""
+"View and edit the numerical format used to parse this layer currently "
+"selected in the sidepane"
+
+#: src/interface.c:730
+msgid "Move u_p"
+msgstr "Move u_p"
+
+#: src/interface.c:731 src/interface.c:1009
+msgid "Move the layer currently selected in the sidepane one step up"
+msgstr "Move the layer currently selected in the sidepane one step up"
+
+#: src/interface.c:737
+msgid "Move dow_n"
+msgstr "Move dow_n"
+
+#: src/interface.c:738 src/interface.c:1002
+msgid "Move the layer currently selected in the sidepane one step down"
+msgstr "Move the layer currently selected in the sidepane one step down"
+
+#: src/interface.c:744
+msgid "_Delete"
+msgstr "_Delete"
+
+#: src/interface.c:746 src/interface.c:1016
+msgid "Remove the layer currently selected in the sidepane"
+msgstr "Remove the layer currently selected in the sidepane"
+
+#: src/interface.c:757
+msgid "_Analyze"
+msgstr "_Analyze"
+
+#: src/interface.c:766
+msgid "Analyze visible _Gerber layers"
+msgstr "Analyze visible _Gerber layers"
+
+#: src/interface.c:768
+msgid ""
+"Examine a detailed anaylsis of the contents of all visible Gerber layers"
+msgstr ""
+"Examine a detailed anaylsis of the contents of all visible Gerber layers"
+
+#: src/interface.c:771
+msgid "Analyze visible _drill layers"
+msgstr "Analyze visible _drill layers"
+
+#: src/interface.c:773
+msgid "Examine a detailed anaylsis of the contents of all visible drill layers"
+msgstr ""
+"Examine a detailed anaylsis of the contents of all visible drill layers"
+
+#: src/interface.c:776
+msgid "_Benchmark (1 min)"
+msgstr "_Benchmark (1 min)"
+
+#: src/interface.c:778
+msgid ""
+"Benchmark different rendering methods. Will make the application "
+"unresponsive for 1 minute!"
+msgstr ""
+"Benchmark different rendering methods. Will make the application "
+"unresponsive for 1 minute!"
+
+#: src/interface.c:787
+msgid "_Tools"
+msgstr "_Tools"
+
+#: src/interface.c:794
+msgid "_Pointer Tool"
+msgstr "_Pointer Tool"
+
+#: src/interface.c:799 src/interface.c:920
+msgid "Select objects on the screen"
+msgstr "Select objects on the screen"
+
+#: src/interface.c:800
+msgid "Pa_n Tool"
+msgstr "Pa_n Tool"
+
+#: src/interface.c:805 src/interface.c:926
+msgid "Pan by left clicking and dragging"
+msgstr "Pan by left clicking and dragging"
+
+#: src/interface.c:807
+msgid "_Zoom Tool"
+msgstr "_Zoom Tool"
+
+#: src/interface.c:812 src/interface.c:934
+msgid "Zoom by left clicking or dragging"
+msgstr "Zoom by left clicking or dragging"
+
+#: src/interface.c:814
+msgid "_Measure Tool"
+msgstr "_Measure Tool"
+
+#: src/interface.c:819 src/interface.c:941
+msgid "Measure distances on the screen"
+msgstr "Measure distances on the screen"
+
+#: src/interface.c:821
+msgid "_Help"
+msgstr "_Help"
+
+#: src/interface.c:835
+msgid "_About Gerbv..."
+msgstr "_About Gerbv..."
+
+#: src/interface.c:837
+msgid "View information about gerbv"
+msgstr "View information about gerbv"
+
+#: src/interface.c:841
+msgid "Known _bugs in this version..."
+msgstr "Known _bugs in this version..."
+
+#: src/interface.c:844
+msgid "View list of known gerbv bugs"
+msgstr "View list of known gerbv bugs"
+
+#: src/interface.c:866
+msgid "Open a previously saved gerbv project"
+msgstr "Open a previously saved gerbv project"
+
+#: src/interface.c:870
+msgid "Reload all layers in project"
+msgstr "Reload all layers in project"
+
+#: src/interface.c:966
+msgid "Rendering: "
+msgstr "Rendering: "
+
+#: src/interface.c:972
+msgid "Fast"
+msgstr "Fast"
+
+#: src/interface.c:973
+msgid "Fast, with XOR"
+msgstr "Fast, with XOR"
+
+#: src/interface.c:974
+msgid "Normal"
+msgstr "Normal"
+
+#: src/interface.c:975
+msgid "High quality"
+msgstr "High quality"
+
+#: src/interface.c:1018
+msgid "Layers"
+msgstr "Layers"
+
+#: src/interface.c:1041
+msgid "Messages"
+msgstr "Messages"
+
+#: src/interface.c:1093
+msgid "mil"
+msgstr "mil"
+
+#: src/interface.c:1095
+msgid "in"
+msgstr "in"
+
+#: src/interface.c:1646 src/interface.c:1739
+msgid "Do not show this dialog again."
+msgstr "Do not show this dialog again."
+
+#: src/interface.c:1779
+msgid "Modify layer orientation"
+msgstr "Modify layer orientation"
+
+#: src/interface.c:1794
+msgid "<span weight=\"bold\">Translation</span>"
+msgstr "<span weight=\"bold\">Translation</span>"
+
+#: src/interface.c:1803
+msgid "X (mils):"
+msgstr "X (mils):"
+
+#: src/interface.c:1804
+msgid "Y (mils):"
+msgstr "Y (mils):"
+
+#: src/interface.c:1809
+msgid "X (mms):"
+msgstr "X (mms):"
+
+#: src/interface.c:1810
+msgid "Y (mms):"
+msgstr "Y (mms):"
+
+#: src/interface.c:1815
+msgid "X (inches):"
+msgstr "X (inches):"
+
+#: src/interface.c:1816
+msgid "Y (inches):"
+msgstr "Y (inches):"
+
+#: src/interface.c:1834
+msgid "<span weight=\"bold\">Scale</span>"
+msgstr "<span weight=\"bold\">Scale</span>"
+
+#: src/interface.c:1838
+msgid "X direction:"
+msgstr "X direction:"
+
+#: src/interface.c:1841
+msgid "Y direction:"
+msgstr "Y direction:"
+
+#: src/interface.c:1854
+msgid "<span weight=\"bold\">Rotation</span>"
+msgstr "<span weight=\"bold\">Rotation</span>"
+
+#: src/interface.c:1858
+msgid "Rotation (degrees):   "
+msgstr "Rotation (degrees):   "
+
+#: src/interface.c:1863
+msgid "90 deg CCW"
+msgstr "90 deg CCW"
+
+#: src/interface.c:1864
+msgid "180 deg CCW"
+msgstr "180 deg CCW"
+
+#: src/interface.c:1865
+msgid "270 deg CCW"
+msgstr "270 deg CCW"
+
+#: src/interface.c:1885
+msgid "<span weight=\"bold\">Mirroring</span>"
+msgstr "<span weight=\"bold\">Mirroring</span>"
+
+#: src/interface.c:1889
+msgid "About X axis:"
+msgstr "About X axis:"
+
+#: src/interface.c:1896
+msgid "About Y axis:"
+msgstr "About Y axis:"
+
+#: src/main.c:178
+#, c-format
+msgid "Opening project = %s\n"
+msgstr "Opening project = %s\n"
+
+#: src/main.c:217
+#, c-format
+msgid "could not read file: %s"
+msgstr "could not read file: %s"
+
+#: src/main.c:244 src/main.c:317
+msgid "malloc gerbvProject->project failed\n"
+msgstr "malloc gerbvProject->project failed\n"
+
+#: src/main.c:247
+#, c-format
+msgid "could not read %s[%d]\n"
+msgstr "could not read %s[%d]\n"
+
+#: src/main.c:297
+msgid "Failed to write project\n"
+msgstr "Failed to write project\n"
+
+#: src/main.c:389
+#, c-format
+msgid "Not handled option %s\n"
+msgstr "Not handled option %s\n"
+
+#: src/main.c:395
+msgid "Width"
+msgstr "Width"
+
+#: src/main.c:399
+#, c-format
+msgid "Split X and Y parameters with an x\n"
+msgstr "Split X and Y parameters with an x\n"
+
+#: src/main.c:406
+msgid "Height"
+msgstr "Height"
+
+#: src/main.c:435
+#, c-format
+msgid "You must specify the border in the format <alpha>.\n"
+msgstr "You must specify the border in the format <alpha>.\n"
+
+#: src/main.c:439
+#, c-format
+msgid "Specified border is not recognized.\n"
+msgstr "Specified border is not recognized.\n"
+
+#: src/main.c:444
+#, c-format
+msgid "Specified border is smaller than zero!\n"
+msgstr "Specified border is smaller than zero!\n"
+
+#: src/main.c:451
+#, c-format
+msgid ""
+"You must give an resolution in the format <DPI XxDPI Y> or <DPI_X_and_Y>.\n"
+msgstr ""
+"You must give an resolution in the format <DPI XxDPI Y> or <DPI_X_and_Y>.\n"
+
+#: src/main.c:455
+#, c-format
+msgid "Specified resolution is not recognized.\n"
+msgstr "Specified resolution is not recognized.\n"
+
+#: src/main.c:465
+#, c-format
+msgid "Specified resolution should be greater than 0.\n"
+msgstr "Specified resolution should be greater than 0.\n"
+
+#: src/main.c:472
+#, c-format
+msgid "You must give an origin in the format <lower_left_X x lower_left_Y>.\n"
+msgstr "You must give an origin in the format <lower_left_X x lower_left_Y>.\n"
+
+#: src/main.c:476
+#, c-format
+msgid "Specified origin is not recognized.\n"
+msgstr "Specified origin is not recognized.\n"
+
+#: src/main.c:483
+#, c-format
+msgid "gerbv version %s\n"
+msgstr "gerbv version %s\n"
+
+#: src/main.c:484
+#, c-format
+msgid ""
+"Copyright (C) 2001 -- 2008 by Stefan Petersen\n"
+"and the respective original authors listed in the source files.\n"
+msgstr ""
+"Copyright (C) 2001 -- 2008 by Stefan Petersen\n"
+"and the respective original authors listed in the source files.\n"
+
+#: src/main.c:492
+#, c-format
+msgid "You must give an background color in the hex-format <#RRGGBB>.\n"
+msgstr "You must give an background color in the hex-format <#RRGGBB>.\n"
+
+#: src/main.c:496 src/main.c:516
+#, c-format
+msgid "Specified color format is not recognized.\n"
+msgstr "Specified color format is not recognized.\n"
+
+#: src/main.c:503
+#, c-format
+msgid "Specified color values should be between 00 and FF.\n"
+msgstr "Specified color values should be between 00 and FF.\n"
+
+#: src/main.c:512
+#, c-format
+msgid ""
+"You must give an foreground color in the hex-format <#RRGGBB> or "
+"<#RRGGBBAA>.\n"
+msgstr ""
+"You must give an foreground color in the hex-format <#RRGGBB> or "
+"<#RRGGBBAA>.\n"
+
+#: src/main.c:530
+#, c-format
+msgid "Specified color values should be between 0x00 (0) and 0xFF (255).\n"
+msgstr "Specified color values should be between 0x00 (0) and 0xFF (255).\n"
+
+#: src/main.c:544
+#, c-format
+msgid "You must give the initial rotation angle\n"
+msgstr "You must give the initial rotation angle\n"
+
+#: src/main.c:550
+msgid "Rotate"
+msgstr "Rotate"
+
+#: src/main.c:554
+#, c-format
+msgid "Failed parsing rotate value\n"
+msgstr "Failed parsing rotate value\n"
+
+#: src/main.c:560
+#, c-format
+msgid "You must give the axis to mirror about\n"
+msgstr "You must give the axis to mirror about\n"
+
+#: src/main.c:570
+#, c-format
+msgid "Failed parsing mirror axis\n"
+msgstr "Failed parsing mirror axis\n"
+
+#: src/main.c:576
+#, c-format
+msgid "You must give a filename to send log to\n"
+msgstr "You must give a filename to send log to\n"
+
+#: src/main.c:584
+#, c-format
+msgid "You must give a filename to export to.\n"
+msgstr "You must give a filename to export to.\n"
+
+#: src/main.c:591
+#, c-format
+msgid "You must give a project filename\n"
+msgstr "You must give a project filename\n"
+
+#: src/main.c:598
+#, c-format
+msgid "You must give a filename to read the tools from.\n"
+msgstr "You must give a filename to read the tools from.\n"
+
+#: src/main.c:602
+#, c-format
+msgid "*** ERROR processing tools file \"%s\".\n"
+msgstr "*** ERROR processing tools file \"%s\".\n"
+
+#: src/main.c:603
+#, c-format
+msgid ""
+"Make sure all lines of the file are formatted like this:\n"
+"T01 0.024\n"
+"T02 0.032\n"
+"T03 0.040\n"
+"...\n"
+"*** EXITING to prevent erroneous display.\n"
+msgstr ""
+"Make sure all lines of the file are formatted like this:\n"
+"T01 0.024\n"
+"T02 0.032\n"
+"T03 0.040\n"
+"...\n"
+"*** EXITING to prevent erroneous display.\n"
+
+#: src/main.c:611
+#, c-format
+msgid "You must give a translation in the format <X,Y>.\n"
+msgstr "You must give a translation in the format <X,Y>.\n"
+
+#: src/main.c:615
+#, c-format
+msgid "The translation format is not recognized.\n"
+msgstr "The translation format is not recognized.\n"
+
+#: src/main.c:632
+#, c-format
+msgid "You must give a window size in the format <width x height>.\n"
+msgstr "You must give a window size in the format <width x height>.\n"
+
+#: src/main.c:636
+#, c-format
+msgid "Specified window size is not recognized.\n"
+msgstr "Specified window size is not recognized.\n"
+
+#: src/main.c:642
+#, c-format
+msgid "Specified window size is out of bounds.\n"
+msgstr "Specified window size is out of bounds.\n"
+
+#: src/main.c:649
+#, c-format
+msgid "You must supply an export type.\n"
+msgstr "You must supply an export type.\n"
+
+#: src/main.c:675
+#, c-format
+msgid "Unrecognized export type.\n"
+msgstr "Unrecognized export type.\n"
+
+#: src/main.c:685
+#, c-format
+msgid ""
+"Usage: gerbv [OPTIONS...] [FILE...]\n"
+"\n"
+"Available options:\n"
+"  -B, --border=<b>                Border around the image in percent of the\n"
+"                                  width/height. Defaults to 5%%.\n"
+"  -D, --dpi=<XxY>or<R>            Resolution (Dots per inch) for the output\n"
+"                                  bitmap. With the format <XxY>, different\n"
+"                                  resolutions for X- and Y-direction are "
+"used.\n"
+"                                  With the format <R>, both are the same.\n"
+"  -O, --origin=<XxY>              Use the specified coordinates (in "
+"inches).\n"
+"                                  for the lower left corner.\n"
+"  -V, --version                   Print version of gerbv.\n"
+"  -a, --antialias                 Use antialiasing for generated bitmap "
+"output.\n"
+"  -b, --background=<hex>          Use background color <hex> (like "
+"#RRGGBB).\n"
+"  -f, --foreground=<hex>          Use foreground color <hex> (like #RRGGBB "
+"or\n"
+"                                  #RRGGBBAA for setting the alpha).\n"
+"                                  Use multiple -f flags to set the color "
+"for\n"
+"                                  multiple layers.\n"
+"  -r, --rotate=<degree>           Set initial orientation for all layers.\n"
+"  -m, --mirror=<axis>             Set initial mirroring axis (X or Y).\n"
+"  -h, --help                      Print this help message.\n"
+"  -l, --log=<logfile>             Send error messages to <logfile>.\n"
+"  -o, --output=<filename>         Export to <filename>.\n"
+"  -p, --project=<prjfile>         Load project file <prjfile>.\n"
+"  -W, --window_inch=<WxH>         Window size in inches <WxH> for the\n"
+"                                  exported image.\n"
+"  -w, --window=<WxH>              Window size in pixels <WxH> for the\n"
+"                                  exported image. Autoscales to fit\n"
+"                                  if no resolution is specified. If a\n"
+"                                  resolution is specified, it will clip.\n"
+"  -t, --tools=<toolfile>          Read Excellon tools from file <toolfile>.\n"
+"  -T, --translate=<X,Y>           Translate the image by <X,Y> (useful for\n"
+"                                  arranging panels). Use multiple -T flags\n"
+"                                  for multiple layers.\n"
+"  -x, --export=<png/pdf/ps/svg/   Export a rendered picture to a file with\n"
+"                rs274x/drill>     the specified format.\n"
+msgstr ""
+"Usage: gerbv [OPTIONS...] [FILE...]\n"
+"\n"
+"Available options:\n"
+"  -B, --border=<b>                Border around the image in percent of the\n"
+"                                  width/height. Defaults to 5%%.\n"
+"  -D, --dpi=<XxY>or<R>            Resolution (Dots per inch) for the output\n"
+"                                  bitmap. With the format <XxY>, different\n"
+"                                  resolutions for X- and Y-direction are "
+"used.\n"
+"                                  With the format <R>, both are the same.\n"
+"  -O, --origin=<XxY>              Use the specified coordinates (in "
+"inches).\n"
+"                                  for the lower left corner.\n"
+"  -V, --version                   Print version of gerbv.\n"
+"  -a, --antialias                 Use antialiasing for generated bitmap "
+"output.\n"
+"  -b, --background=<hex>          Use background color <hex> (like "
+"#RRGGBB).\n"
+"  -f, --foreground=<hex>          Use foreground color <hex> (like #RRGGBB "
+"or\n"
+"                                  #RRGGBBAA for setting the alpha).\n"
+"                                  Use multiple -f flags to set the color "
+"for\n"
+"                                  multiple layers.\n"
+"  -r, --rotate=<degree>           Set initial orientation for all layers.\n"
+"  -m, --mirror=<axis>             Set initial mirroring axis (X or Y).\n"
+"  -h, --help                      Print this help message.\n"
+"  -l, --log=<logfile>             Send error messages to <logfile>.\n"
+"  -o, --output=<filename>         Export to <filename>.\n"
+"  -p, --project=<prjfile>         Load project file <prjfile>.\n"
+"  -W, --window_inch=<WxH>         Window size in inches <WxH> for the\n"
+"                                  exported image.\n"
+"  -w, --window=<WxH>              Window size in pixels <WxH> for the\n"
+"                                  exported image. Autoscales to fit\n"
+"                                  if no resolution is specified. If a\n"
+"                                  resolution is specified, it will clip.\n"
+"  -t, --tools=<toolfile>          Read Excellon tools from file <toolfile>.\n"
+"  -T, --translate=<X,Y>           Translate the image by <X,Y> (useful for\n"
+"                                  arranging panels). Use multiple -T flags\n"
+"                                  for multiple layers.\n"
+"  -x, --export=<png/pdf/ps/svg/   Export a rendered picture to a file with\n"
+"                rs274x/drill>     the specified format.\n"
+
+#: src/main.c:721
+#, c-format
+msgid ""
+"Usage: gerbv [OPTIONS...] [FILE...]\n"
+"\n"
+"Available options:\n"
+"  -B<b>                   Border around the image in percent of the\n"
+"                          width/height. Defaults to 5%%.\n"
+"  -D<XxY>or<R>            Resolution (Dots per inch) for the output\n"
+"                          bitmap. With the format <XxY>, different\n"
+"                          resolutions for X- and Y-direction are used.\n"
+"                          With the format <R>, both are the same.\n"
+"  -O<XxY>                 Use the specified coordinates (in inches)\n"
+"                          for the lower left corner.\n"
+"  -V                      Print version of gerbv.\n"
+"  -a                      Use antialiasing for generated bitmap output.\n"
+"  -b<hexcolor>\t           Use background color <hexcolor> (like #RRGGBB).\n"
+"  -f<hexcolor>            Use foreground color <hexcolor> (like #RRGGBB or\n"
+"                          #RRGGBBAA for setting the alpha).\n"
+"                          Use multiple -f flags to set the color for\n"
+"                          multiple layers.\n"
+"  -r<degree>              Set initial orientation for all layers.\n"
+"  -m<axis>                Set initial mirroring axis (X or Y).\n"
+"  -h                      Print this help message.\n"
+"  -l<logfile>             Send error messages to <logfile>.\n"
+"  -o<filename>            Export to <filename>.\n"
+"  -p<prjfile>             Load project file <prjfile>.\n"
+"  -W<WxH>                 Window size in inches <WxH> for the\n"
+"                          exported image.\n"
+"  -w<WxH>                 Window size in pixels <WxH> for the\n"
+"                          exported image. Autoscales to fit\n"
+"                          if no resolution is specified. If a\n"
+"                          resolution is specified, it will clip.\n"
+"                          exported image.\n"
+"  -t<toolfile>            Read Excellon tools from file <toolfile>\n"
+"  -T<X,Y>                 Translate the image by <X,Y> (useful for\n"
+"                          arranging panels). Use multiple -T flags\n"
+"                          for multiple layers.\n"
+"  -x <png/pdf/ps/svg/     Export a rendered picture to a file with\n"
+"      rs274x/drill>       the specified format.\n"
+msgstr ""
+"Usage: gerbv [OPTIONS...] [FILE...]\n"
+"\n"
+"Available options:\n"
+"  -B<b>                   Border around the image in percent of the\n"
+"                          width/height. Defaults to 5%%.\n"
+"  -D<XxY>or<R>            Resolution (Dots per inch) for the output\n"
+"                          bitmap. With the format <XxY>, different\n"
+"                          resolutions for X- and Y-direction are used.\n"
+"                          With the format <R>, both are the same.\n"
+"  -O<XxY>                 Use the specified coordinates (in inches)\n"
+"                          for the lower left corner.\n"
+"  -V                      Print version of gerbv.\n"
+"  -a                      Use antialiasing for generated bitmap output.\n"
+"  -b<hexcolor>\t           Use background color <hexcolor> (like #RRGGBB).\n"
+"  -f<hexcolor>            Use foreground color <hexcolor> (like #RRGGBB or\n"
+"                          #RRGGBBAA for setting the alpha).\n"
+"                          Use multiple -f flags to set the color for\n"
+"                          multiple layers.\n"
+"  -r<degree>              Set initial orientation for all layers.\n"
+"  -m<axis>                Set initial mirroring axis (X or Y).\n"
+"  -h                      Print this help message.\n"
+"  -l<logfile>             Send error messages to <logfile>.\n"
+"  -o<filename>            Export to <filename>.\n"
+"  -p<prjfile>             Load project file <prjfile>.\n"
+"  -W<WxH>                 Window size in inches <WxH> for the\n"
+"                          exported image.\n"
+"  -w<WxH>                 Window size in pixels <WxH> for the\n"
+"                          exported image. Autoscales to fit\n"
+"                          if no resolution is specified. If a\n"
+"                          resolution is specified, it will clip.\n"
+"                          exported image.\n"
+"  -t<toolfile>            Read Excellon tools from file <toolfile>\n"
+"  -T<X,Y>                 Translate the image by <X,Y> (useful for\n"
+"                          arranging panels). Use multiple -T flags\n"
+"                          for multiple layers.\n"
+"  -x <png/pdf/ps/svg/     Export a rendered picture to a file with\n"
+"      rs274x/drill>       the specified format.\n"
+
+#: src/main.c:762
+#, c-format
+msgid "Not handled option [%d=%c]\n"
+msgstr "Not handled option [%d=%c]\n"
+
+#: src/main.c:773
+#, c-format
+msgid "Loading project %s...\n"
+msgstr "Loading project %s...\n"
+
+#: src/main.c:948 src/main.c:966
+#, c-format
+msgid "A valid file was not loaded.\n"
+msgstr "A valid file was not loaded.\n"
+
+#: src/pick-and-place.c:449
+msgid "malloc buf failed while checking for pick-place file.\n"
+msgstr "malloc buf failed while checking for pick-place file.\n"
+
+#: src/pick-and-place.c:594
+msgid "malloc pick_place_stats failed\n"
+msgstr "malloc pick_place_stats failed\n"
+
+#: src/project.c:256
+msgid "Color parameter not a vector\n"
+msgstr "Color parameter not a vector\n"
+
+#: src/project.c:260
+msgid "Color vector of incorrect length\n"
+msgstr "Color vector of incorrect length\n"
+
+#: src/project.c:270
+msgid "Illegal color in projectfile\n"
+msgstr "Illegal color in projectfile\n"
+
+#: src/project.c:495
+msgid "define-layer!: Too few arguments\n"
+msgstr "define-layer!: Too few arguments\n"
+
+#: src/project.c:503
+msgid "define-layer!: Layer number missing/incorrect\n"
+msgstr "define-layer!: Layer number missing/incorrect\n"
+
+#: src/project.c:528
+msgid "define-layer!:non-symbol found, ignoring\n"
+msgstr "define-layer!:non-symbol found, ignoring\n"
+
+#: src/project.c:552
+msgid "Argument to inverted must be #t or #f\n"
+msgstr "Argument to inverted must be #t or #f\n"
+
+#: src/project.c:560
+msgid "Argument to visible must be #t or #f\n"
+msgstr "Argument to visible must be #t or #f\n"
+
+#: src/project.c:578
+#, c-format
+msgid "%s():  realloc failed\n"
+msgstr "%s():  realloc failed\n"
+
+#: src/project.c:641
+#, c-format
+msgid "%s():  WARNING:  HID_Mixed is not yet supported\n"
+msgstr "%s():  WARNING:  HID_Mixed is not yet supported\n"
+
+#: src/project.c:650
+#, c-format
+msgid "%s():  Unknown attribute type: \"%s\"\n"
+msgstr "%s():  Unknown attribute type: \"%s\"\n"
+
+#: src/project.c:678
+msgid "set-render-type!: Too few arguments\n"
+msgstr "set-render-type!: Too few arguments\n"
+
+#: src/project.c:702
+msgid "gerbv-file-version!: Too few arguments\n"
+msgstr "gerbv-file-version!: Too few arguments\n"
+
+#: src/project.c:714
+#, c-format
+msgid ""
+"The project file you are attempting to load has specified that it\n"
+"uses project file version \"%s\" but this string is not\n"
+"a valid version.  Gerbv will attempt to load the file using\n"
+"version \"%s\".  You may experience unexpected results.\n"
+msgstr ""
+"The project file you are attempting to load has specified that it\n"
+"uses project file version \"%s\" but this string is not\n"
+"a valid version.  Gerbv will attempt to load the file using\n"
+"version \"%s\".  You may experience unexpected results.\n"
+
+#: src/project.c:723
+#, c-format
+msgid "%s():  Read a project file version of %s (%d)\n"
+msgstr "%s():  Read a project file version of %s (%d)\n"
+
+#: src/project.c:724
+#, c-format
+msgid "      Translated back to \"%s\"\n"
+msgstr "      Translated back to \"%s\"\n"
+
+#: src/project.c:732
+#, c-format
+msgid ""
+"The project file you are attempting to load is version \"%s\"\n"
+"but this copy of gerbv is only capable of loading project files\n"
+"using version \"%s\" or older.  You may experience unexpected results."
+msgstr ""
+"The project file you are attempting to load is version \"%s\"\n"
+"but this copy of gerbv is only capable of loading project files\n"
+"using version \"%s\" or older.  You may experience unexpected results."
+
+#: src/project.c:751
+#, c-format
+msgid ""
+"The project file you are attempting to load is version \"%s\"\n"
+"which is an unknown version.\n"
+"You may experience unexpected results."
+msgstr ""
+"The project file you are attempting to load is version \"%s\"\n"
+"which is an unknown version.\n"
+"You may experience unexpected results."
+
+#: src/project.c:824 src/project.c:829
+#, c-format
+msgid "Failed to read %s\n"
+msgstr "Failed to read %s\n"
+
+#: src/project.c:837
+msgid "Couldn't init scheme\n"
+msgstr "Couldn't init scheme\n"
+
+#: src/project.c:845
+#, c-format
+msgid "Problem loading init.scm (%s)\n"
+msgstr "Problem loading init.scm (%s)\n"
+
+#: src/project.c:852
+#, c-format
+msgid "Couldn't open %s (%s)\n"
+msgstr "Couldn't open %s (%s)\n"
+
+#: src/project.c:872
+#, c-format
+msgid "Couldn't open project file %s (%s)\n"
+msgstr "Couldn't open project file %s (%s)\n"
+
+#: src/project.c:916
+#, c-format
+msgid "Couldn't save project %s\n"
+msgstr "Couldn't save project %s\n"
+
+#: src/project.c:986
+#, c-format
+msgid "%s():  WARNING:  HID_Mixed is not yet supported.\n"
+msgstr "%s():  WARNING:  HID_Mixed is not yet supported.\n"
+
+#: src/project.c:996
+#, c-format
+msgid "%s: unknown type of HID attribute (%d)\n"
+msgstr "%s: unknown type of HID attribute (%d)\n"
+
+#: src/render.c:159
+#, c-format
+msgid "Illegal zoom direction %d\n"
+msgstr "Illegal zoom direction %d\n"
+
+#: src/tooltable.c:57
+#, c-format
+msgid "*** WARNING: Strange tool \"%s\" ignored.\n"
+msgstr "*** WARNING: Strange tool \"%s\" ignored.\n"
+
+#: src/tooltable.c:61
+#, c-format
+msgid "*** WARNING: No tool number in \"%s\".\n"
+msgstr "*** WARNING: No tool number in \"%s\".\n"
+
+#: src/tooltable.c:71
+#, c-format
+msgid "*** WARNING: Can't parse tool number in \"%s\".\n"
+msgstr "*** WARNING: Can't parse tool number in \"%s\".\n"
+
+#: src/tooltable.c:88
+#, c-format
+msgid "*** WARNING: Tool T%02d diameter is impossible.\n"
+msgstr "*** WARNING: Tool T%02d diameter is impossible.\n"
+
+#: src/tooltable.c:92
+#, c-format
+msgid "*** WARNING: Tool T%02d diameter is very small - are you sure?\n"
+msgstr "*** WARNING: Tool T%02d diameter is very small - are you sure?\n"
+
+#: src/tooltable.c:97
+#, c-format
+msgid "*** ERROR: Tool T%02d is already defined.\n"
+msgstr "*** ERROR: Tool T%02d is already defined.\n"
+
+#: src/tooltable.c:98
+#, c-format
+msgid "*** Exiting because this is a HOLD error at any board house.\n"
+msgstr "*** Exiting because this is a HOLD error at any board house.\n"
+
+#: src/tooltable.c:121
+#, c-format
+msgid "*** ERROR: Failed to open file \"%s\" to read.\n"
+msgstr "*** ERROR: Failed to open file \"%s\" to read.\n"

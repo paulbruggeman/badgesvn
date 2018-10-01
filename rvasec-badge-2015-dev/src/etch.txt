@@ -1,0 +1,106 @@
+Use a clean surface, try to keep it dust free and dry.
+I use gloves at all times since I wash them after any contact
+with chemicals or objects to prevent cross contamination
+
+ 1) copper board cleaning
+   - you can check surface quality with water- rinse it and see
+     if it "sheets"- that is it has an even layer of water that does 
+     not bead. beading in an area indicates oil/dirty.
+   - use alcohol normally with a clean paper towel only. TSP
+     (tri-sodium phosphate) can be use to clean oily surfaces.
+   - Don't sand/grind/steel wool the surface as this makes 
+     it hard to remove the resist, resulting in nasty patterns 
+     when etched
+
+ 2) in the dark with a YELLOW bug light
+
+ 3) film to copper sheet laminating
+   The film naturally curls when off the roll. The curl side
+   goes against the copper. This side has protective film that has
+   to be removed. It is softer than the outer curl protective film.
+   A piece of tape on each side of the film on the corners is 
+   usefull to begin the process of lifting the film off
+
+ 4) wet copper thoroughly: sheeting and beads of water on surface
+   - drape/lay film down on copper and flatten + straigten
+   - wet protected side of film for lubrication
+   - squeege air bubbles out- don't take too long since the
+     film is slowly attaching itself to the copper
+   - run through laminator once or twice 
+     (heat doesn't seem to matter, but edges may pull up easier)
+   - if there are a few large air bubbles, the transparency can often be
+     placed so that the air bubble is not in a critical spot
+     often air bubbles will laminate onto the copper with the air
+     displace from the copper side to the protective sheet side.
+     this is hard to tell for sure. Lamination appears to have
+     some lattitude for air bubble errors, but a board with many (10+) 
+     obvious air bubbles should be stripped and re-covered. 
+     All boards have some smaller surface marks that maybe bubbles
+   - heat backside of board for about 1-2 minutes with heat gun
+     keeping air moving evenly across board. heat backside to avoid
+     damaging film with heat on the front. no hotter than 200f
+   - let cool several minutes
+
+ 5) Transparency
+   - double up artwork for higher opacity/contrast/black density
+   - the 2nd transparency may slip by 1 or 2 pixel
+     from top to bottom of the print, if so cut apart in sections
+     removing enough material between sections to allow space for
+     the thin scotch tape to hold them down. The goal is to make the 
+     double layers completely flat so that when held down by glass
+     the tape is not creating an air gap for light to get under
+     or reflect/bounce along the edges.
+   - make sure it is clean 
+
+ 6) put laminated copper board on perfectly flat board, film up
+
+ 7) put transparenies on laminated copper board
+
+ 8) use heavy 1/4" piece of glass to hold down transparencies on 
+   the laminated copper. Use weights on edges to keep air tight
+   seal. The glass at the space is not optical quality and I think
+   is iron type which filters IR. Other glass will change exposure
+   times.
+
+ 9) put 500 watt light about 2' above transparency or use 1st
+   mark on the antenna pole- use a 17 minute exposure
+   - higher marks on antenna pole worked at 25 minutes and 30-ish 
+     minute and had better edges at the expense of longer exposure times
+
+10) check while exposing that you don't see a shadow under the tranparency
+
+11) when done remove artwork. pattern should be visable with good
+    contrast with grey purple color.
+
+12) use tape on the edge to pull up 2nd top protective film. Exposed purple
+    edges are easiest to pull up without damaging the resist layer
+
+13) develop for about 2 minutes with a HARD spray 2-3 in diameter at contact.
+    Pump the sprayer 50-70 times using 1/2 gallon mix of water mixed with 
+    small shot glass plastic measuring cup filled to the first 1/4" line 
+    with soda ash. Put whole 1/2 gallon into sprayer, preferably still warm
+    at approximately 90F
+
+    - keep spray moving at all times. DON'T concentrate on an area since 
+      you can't really see detail that well in the dark. If in doubt RINSE it
+      off (to stop developing) and look at it close to the yellow light.
+
+    - when done: rinse both sides with warm water checking for slippery spots 
+      that didn't get developed, if found go back a develop some more. if you
+      have film lifting away from the copper, then you have developed to long or 
+      had and air bubble under that part of the film
+
+now ok in full light
+--------------------
+
+14) pat dry and put back under the light for 3-5 minutes to finish
+    exposing, drying and hardening of the film
+
+15) trim edges off board to save on etch time + acid
+
+16) etch for 10-15 min. in 120F-ish ferric chloride. check board immediately
+    to confirm all areas are etching some- not still shiny.  If so then you 
+    didn't develop all the way and may be able to save it by spraying some 
+    more with developer
+
+ -Paul

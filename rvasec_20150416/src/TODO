@@ -1,0 +1,139 @@
+------------------------------------
+  high priority ASAP
+------------------------------------
+
+  - 3D matrix and support for the display list
+
+  - USB footprint on battery board
+
+  - Flash "file system"
+
+    write(struct flashData *fdata)
+    read(struct flashData *fdata)
+
+    /* on a read the last data of type dataId is always returned */
+    /* on a write the data is written in the next available location */
+    /* dataID 0xFF is illegal since that is empty flash */
+    struct flashData {
+    	unsigned char app_cb(appId),
+	unsigned char dataID,
+	unsigned char dataSize,
+	unsigned char *data
+    }
+
+    struct sysData {
+	char name[32];
+	char sekrits[8];
+	char achievements[8];
+    }
+
+    struct flashBlock {
+	struct sysData;
+	struct appData[NUMAPPS];
+    }
+
+
+  - IR system messages:
+    - "c" command bit {
+         0 read
+         1 write
+      }
+      "a" address bit {
+	0 - 31
+      }
+      "i" id bit {
+	0 - 1023
+      }
+      "d" data bits {
+	0 - 65535
+      }
+
+      c = command bit
+      a = address bit
+      f = increment/decrement your internal counter for a
+      i = badge id
+      d = data [writes/read response]
+      caaa afii iiii iiii [dddd dddd dddd dddd]
+      0000 0000 0000 0000 [0000 0000 0000 0000]
+
+      /* 32 IR addresses map to real addr somewhere */
+      enum addresses {
+	NAME,
+	BADGEID,
+	SEKRITS,
+	ACHIEVEMENTS,
+	ASSET,		/* uploadable buffer? */
+	FORTHCODE,	/* hackit? */
+      }
+
+
+
+  - IR xmit callback to fill
+  - IR recv callback to empty
+
+  - power usage and scope 
+    * Profile new pre-production boards
+      - IR-xmit ripple (ok on betas)
+      - LED 
+      - piezo
+X     - backlight PWM
+
+------------------------------------
+    ASAP
+------------------------------------
+
+  X HW calibration/charge time for touch pad
+    the lower right one takes a while longer to charge for some reason. 
+    * profile the final board(s)
+    * beta badges appear to be consistent
+
+------------------------------------
+
+X  - simple menu struct tree and traversal
+
+  - asset management
+X   - 1 bit image.h  colormap[2], 1 bit data
+X   - 2 bit image.h  colormap[4], 2 bit data
+X   - 4 bit image.h  colormap[16], 4 bitdata
+X   - 8 bit image.h  colormap[256], 8 bitdata
+X   - 8 bit audio.h  PWM(offtime, duration)
+X   - 8 bit mario.h  PWM(offtime, duration)
+X   - 8 bit got.h  game of thrones. minimal midi player
+
+X - conversion util, convert 8 bit colormap 
+    to 4 bit colormap
+
+X - touchCTMU 
+    X - started under timer3.
+    X - needs rewrite to use ADC and interupts
+
+    X - "trends" for sliders
+    X   - value increasing/descreasing
+    X   - relative offsets:
+    X - on/off cutoff
+    X - array of average
+
+X  - etch paste stencil
+
+X - note swapped x direction on the lcd
+
+X - LCD (Jon)
+    X - basic compositing
+    X - scan line compositing
+
+X - USB footprint on badge board.
+    X - Holes are off for some reason.
+    X - extended copper so can be surface mount
+
+X - piezo- basic audio. see timer1_int.c 
+    do_audio, called from timer1 int.
+    from main.c USB tty (not forth) "qwertyui" beeps tones and "<>" changes duration.
+    press 'm' to play mario 
+
+X - tested self flash read/write
+
+X - icon puzzle/graphic for CTF, "42" in binary- HHGG
+
+X - IR - transmit + receive
+
+X - IR xmit and recv

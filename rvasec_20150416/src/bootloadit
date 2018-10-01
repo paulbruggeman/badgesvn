@@ -1,0 +1,5 @@
+#!/bin/tcsh -f
+
+ls -lt ../Badge15.X/dist/default/production/Badge15.X.production.hex
+
+./pic32usb ../Badge15.X/dist/default/production/Badge15.X.production.hex

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# this is quick way to find out what is 
+# using space in programming flash 
+# is show the compuled object size
+
+find ../Badge16.X -name \*.o -exec ls -lt \{\} \;

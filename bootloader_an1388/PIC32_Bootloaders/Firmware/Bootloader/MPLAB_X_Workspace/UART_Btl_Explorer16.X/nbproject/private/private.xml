@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/Source/FrameWork/Framework.c</file>
+        <file>file:/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/Include/BootLoader.h</file>
+        <file>file:/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/Source/Uart/Uart.c</file>
+        <file>file:/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/Source/BootLoader.c</file>
+        <file>file:/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/Source/NVMem.c</file>
+        <file>file:/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/Include/HardwareProfile/HardwareProfile_PIC32MX_PIM_Explorer_16.h</file>
+        <file>file:/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/Include/HardwareProfile/HardwareProfile.h</file>
+    </open-files>
+</project-private>

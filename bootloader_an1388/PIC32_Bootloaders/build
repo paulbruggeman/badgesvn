@@ -1,0 +1,23 @@
+
+CLEAN SUCCESSFUL (total time: 78ms)
+make -f nbproject/Makefile-default.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory `/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/MPLAB_X_Workspace/UART_Btl_Explorer16.X'
+make  -f nbproject/Makefile-default.mk dist/default/production/UART_Btl_Explorer16.X.production.hex
+make[2]: Entering directory `/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/MPLAB_X_Workspace/UART_Btl_Explorer16.X'
+"/opt/microchip/xc32/v1.20/bin/xc32-gcc" -g -x c -c -mprocessor=32MX795F512L -DDEMO_BOARD_EXPLORER_16 -DTRANSPORT_LAYER_UART -I../../Include/HardwareProfile -I../../Include -I../../Include/Usb/Stack -I../../Include/FrameWork -I../.. -I../../Include/Usb -I../../Include/Uart -I../../Include/Framework -O1 -MMD -MF build/default/production/_ext/1094924598/Framework.o.d -o build/default/production/_ext/1094924598/Framework.o ../../Source/FrameWork/Framework.c 
+"/opt/microchip/xc32/v1.20/bin/xc32-gcc" -g -x c -c -mprocessor=32MX795F512L -DDEMO_BOARD_EXPLORER_16 -DTRANSPORT_LAYER_UART -I../../Include/HardwareProfile -I../../Include -I../../Include/Usb/Stack -I../../Include/FrameWork -I../.. -I../../Include/Usb -I../../Include/Uart -I../../Include/Framework -O1 -MMD -MF build/default/production/_ext/1129149022/Uart.o.d -o build/default/production/_ext/1129149022/Uart.o ../../Source/Uart/Uart.c 
+"/opt/microchip/xc32/v1.20/bin/xc32-gcc" -g -x c -c -mprocessor=32MX795F512L -DDEMO_BOARD_EXPLORER_16 -DTRANSPORT_LAYER_UART -I../../Include/HardwareProfile -I../../Include -I../../Include/Usb/Stack -I../../Include/FrameWork -I../.. -I../../Include/Usb -I../../Include/Uart -I../../Include/Framework -O1 -MMD -MF build/default/production/_ext/1787047461/BootLoader.o.d -o build/default/production/_ext/1787047461/BootLoader.o ../../Source/BootLoader.c 
+"/opt/microchip/xc32/v1.20/bin/xc32-gcc" -g -x c -c -mprocessor=32MX795F512L -DDEMO_BOARD_EXPLORER_16 -DTRANSPORT_LAYER_UART -I../../Include/HardwareProfile -I../../Include -I../../Include/Usb/Stack -I../../Include/FrameWork -I../.. -I../../Include/Usb -I../../Include/Uart -I../../Include/Framework -O1 -MMD -MF build/default/production/_ext/1787047461/NVMem.o.d -o build/default/production/_ext/1787047461/NVMem.o ../../Source/NVMem.c 
+"/opt/microchip/xc32/v1.20/bin/xc32-gcc"   -mprocessor=32MX795F512L  -o dist/default/production/UART_Btl_Explorer16.X.production.elf build/default/production/_ext/1094924598/Framework.o build/default/production/_ext/1129149022/Uart.o build/default/production/_ext/1787047461/BootLoader.o build/default/production/_ext/1787047461/NVMem.o          -Wl,--defsym=__MPLAB_BUILD=1,--script="../../linker_scripts/uart/btl_32MX795F512L_uart.ld",--gc-sections,-L"../../MPLAB_Workspace",-Map=".map"
+"/opt/microchip/xc32/v1.20/bin"/xc32-bin2hex dist/default/production/UART_Btl_Explorer16.X.production.elf 
+make[2]: Leaving directory `/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/MPLAB_X_Workspace/UART_Btl_Explorer16.X'
+make[1]: Leaving directory `/home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/MPLAB_X_Workspace/UART_Btl_Explorer16.X'
+
+BUILD SUCCESSFUL (total time: 1s)
+Loading code from /home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/MPLAB_X_Workspace/UART_Btl_Explorer16.X/dist/default/production/UART_Btl_Explorer16.X.production.hex...
+Loading symbols from /home/paul/an1388/PIC32_Bootloaders/Firmware/Bootloader/MPLAB_X_Workspace/UART_Btl_Explorer16.X/dist/default/production/UART_Btl_Explorer16.X.production.elf...
+Loading completed
+
+
+
+

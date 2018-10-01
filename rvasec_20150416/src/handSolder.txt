@@ -1,0 +1,81 @@
+
+Badge2015 Hand soldering instructions
+
+
+- check for shorts
+  - Typical problem areas
+  - Processor pins
+
+    Fix:
+    - use fine soldering iron to wick solder bridge away from
+      processor pins along the trace. This is easiest with some flux 
+      to help the solder flow. Flux the trace and the solder will follow.
+
+    - If there is a lot of excess solder a solder sucker or copper wick 
+      may be usefull.
+
+  - LCD pads
+
+    Fix:
+    - use fine or normal soldering iron to wick solder down along trace
+      flux the traces and the solder will follow
+    - can also melt and carefully flick a blob off the board
+
+    - If there is a lot of excess solder a solder sucker or copper wick 
+      may be usefull.
+
+- check for capacitors that "submarine" or "tombstone" this is where the 
+  part tilts up during the reflow process instead of staying flat
+
+  Fix:
+
+  - Hot air station is recommended
+    *** Try not to heat and blow away nearby parts ***
+    - Hold part with a tweezer while pointing the air towards the part
+      and moving maybe 1/4 - 1/2" circles around it, this is to avoid heating 
+      to long in one spot and cooking the board or the part. 
+      1 minute should do it. Temps are 6 or 700F and air flow is 4 or 5 out of 10.
+
+  - Solder iron
+    - DONT PRY ON THE PART -SERIOUSLY- the traces tear very easily when hot
+    - Heat up the part by applying heat alternating on each end and the middle
+      You can also use the side of the iron tip (not the point) to apply heat
+      After a minute or two the part will either stick to the iron or one end 
+      will come loose, then the other end can be desoldered while the part is 
+      held with a tweezer
+  
+- Check for capacitors and other parts that have moved off position. 
+  The resistors and other parts do not typically have this problem 
+
+- USB soldering
+  *make sure the usb hangs over the edge of the board and fits flush against it*
+  - flatten and bend big side pins out to the side above the plane of the PCB 
+    board
+  - cut 2 plastic alignment pin from under connector
+  - solder 4 small USB pins 
+  - check that the part is still flush against the board
+  - bend down big side pins
+  - solder big side pins. These take a lot of heat. Flux is also recommended.
+    *** Using the sharp point of the iron is useless ***
+    *** as that won't transfer much heat at all ***
+    If you have a chisel tip available for your iron, now is the time to use it.
+    Put a big blob of solder on the iron and apply to pin using the side/edge of 
+    the tip to contact the pin to transfer the most heat. 
+    
+
+ - IR LED
+ - "L" bend leads, cut maybe 1/4 - 1/2" long
+ - Dot faces left
+
+ - IR Receiver
+ - "L" bend leads, cut maybe 1/4 - 3/8" long
+ - Curved dome faces left
+
+ - Piezo
+   - "L" bend leads, medium length maybe 1/2
+   - Piezo point towards USB so it doesn't cover hackrva logo
+
+ - 32768 clock crystal 
+   - cut leads to about 1/4" so it doesnt reach the ground line when lying almost 
+     flat
+   - part should not touch capactors, it should be between them

@@ -1,0 +1,43 @@
+#!/bin/csh -vf
+
+# search and replace: flashedBadgeId
+#grep flashedBadgeId ../../Badge15.X/mappit
+
+set count = `grep -i beef ../../Badge15.X/dist/default/production/Badge15.X.production.hex|wc -l`
+if ($count != 1) then
+   echo "MORE THAN ONE MAGIC KEY IN HEX"
+   exit 0
+endif
+
+./badgeId.awk badgeId=01E0 < ../../Badge15.X/dist/default/production/Badge15.X.production.hex > t.hex
+
+set diffCount = `diff -i t.hex ../../Badge15.X/dist/default/production/Badge15.X.production.hex|wc -l`
+if ($diffCount != 4) then
+   echo "DIFF PROBLEM"
+   diff -i t.hex ../../Badge15.X/dist/default/production/Badge15.X.production.hex
+   exit 0
+endif
+
+set checkErrors = `./chkihex.awk ../../Badge15.X/dist/default/production/Badge15.X.production.hex | grep ERROR | wc -l`
+if ($checkErrors != 0) then
+   echo "CHECK ERRORS "
+   ./chkihex.awk t.hex | grep ERROR
+   exit 0
+endif
+
+#../pic32usb t.hex
+
+set i = 1
+while ($i < 400)
+   set badgeId = `echo $i | awk '{printf "%04x", $1 }'`
+   echo $i is hex $badgeId
+
+   cat ../../Badge15.X/dist/default/production/Badge15.X.production.hex \
+   | ./badgeId.awk badgeId=$badgeId \
+   > FIX_badge_$i.hex
+
+    @ i++
+end
+
+
+

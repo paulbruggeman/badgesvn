@@ -1,0 +1,5 @@
+#!/bin/tcsh -f
+
+ls -lt t.hex
+
+../pic32usb t.hex

@@ -1,0 +1,73 @@
+----------------------------------
+in gimp
+----------------------------------
+
+open->
+   rvasec.jpeg
+
+image->scaleimage
+ 48x48
+
+image->mode->indexed
+   max colors 4
+
+export
+  c source code header
+  rvasecbug.h
+
+
+----------------------------------
+in a shell
+----------------------------------
+
+In the logos directory
+
+   cd logos
+   copy hto2bit.c to rvasecbug.c 
+NOTE: please dont edit hto2bit.c and commit it
+
+change:
+  #include "hackrva.h"
+  #define CMAP() hackrva_data_cmap
+  #define PIXEL() hackrva_data
+  #define OUTNAME "hackrva2"
+
+to:
+
+  #include "rvasecbug.h"
+  #define CMAP() header_data_cmp
+  #define PIXEL() header_data
+  #define OUTNAME "rvasecbug2" // 2 == 2bit
+
+save rvasecbug.c 
+  cc -o rvasecbug2 rvasecbug2.c
+
+run and capture output into new 2 bit file:
+  ./rvasecbug2 > rvasecbug2.h
+
+
+
+----------------------------------
+ the 4 bit version is:
+
+ hto4bit.c
+----------------------------------
+
+ for 1 bit versions just use
+
+gimp 
+image->scaleimage
+ 48x48 (whatever)
+
+image->mode->indexed
+   max colors 2
+
+export
+  xbitmap/xbm
+  file.xbm
+
+
+----------------------------------
+
+
+-Paul
